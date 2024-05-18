@@ -6,6 +6,7 @@ import type { DefineComponent } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import AppLayout from '~/layouts/app.layout.vue'
+import AuthLayout from '~/layouts/auth.layout.vue'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 
@@ -20,7 +21,17 @@ createInertiaApp({
       import.meta.glob<DefineComponent>('../pages/**/*.vue')
     )
 
-    page.then((module) => (module.default.layout = module.default.layout || AppLayout))
+    page.then((module) => {
+      let layout = module.default.layout
+
+      if (name.includes('auth')) {
+        layout = AuthLayout
+      } else {
+        layout = AppLayout
+      }
+
+      module.default.layout = layout
+    })
 
     return page
   },

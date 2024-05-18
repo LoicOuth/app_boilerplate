@@ -8,14 +8,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '~/components/shared/ui/sheet'
-import { useMediaQuery } from '~/composables/use_media_query'
 import { Button } from '~/components/shared/ui/button'
-import NavLink from '~/components/shared/NavLink.vue'
+import NavLink from '~/components/shared/nav_link.vue'
 import { useUser } from '~/composables/use_user'
-import { useForm } from '@inertiajs/vue3'
+import { Link, useForm } from '@inertiajs/vue3'
 import { Theme } from '#types/theme'
+import { useScreenMediaQuery } from '~/composables/use_screen_media_query'
 
-const { isMobile } = useMediaQuery()
+const { mdAndUp } = useScreenMediaQuery()
 const { isThemeDark, theme } = useUser()
 
 const isOpen = ref(false)
@@ -43,7 +43,12 @@ const toggleTheme = () => {
   <div vaul-drawer-wrapper class="flex min-h-screen flex-col bg-background">
     <header class="sticky z-40 top-0 bg-background/80 backdrop-blur-lg border-b border-border">
       <div class="container flex h-14 max-w-screen-2xl items-center gap-6">
-        <Sheet v-if="isMobile" v-model:open="isOpen">
+        <template v-if="mdAndUp">
+          <NavLink to="/" text="Accueil" />
+          <NavLink to="/about" text="A propos" />
+        </template>
+
+        <Sheet v-else v-model:open="isOpen">
           <SheetTrigger as-child>
             <Button variant="ghost" size="icon">
               <MenuIcon :size="30" />
@@ -56,15 +61,12 @@ const toggleTheme = () => {
           </SheetContent>
         </Sheet>
 
-        <template v-else>
-          <NavLink to="/" text="Accueil" />
-          <NavLink to="/about" text="A propos" />
-        </template>
-
         <div class="flex flex-1 items-center space-x-2 justify-end">
-          <Button variant="ghost">
-            <LogInIcon :size="20" class="mr-2" />
-            <span>Se connecter</span>
+          <Button variant="ghost" as-child>
+            <Link href="/login">
+              <LogInIcon :size="20" class="mr-2" />
+              <span>Se connecter</span>
+            </Link>
           </Button>
           <Button variant="ghost" size="icon" @click="toggleTheme()">
             <SunIcon v-if="isThemeDark" />

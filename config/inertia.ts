@@ -20,6 +20,6 @@ export default defineConfig({
    */
   ssr: {
     enabled: true,
-    pages: ['home'],
+    pages: ['home', 'auth/login', 'auth/register'],
   },
 })

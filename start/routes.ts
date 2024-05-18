@@ -10,9 +10,14 @@
 import router from '@adonisjs/core/services/router'
 const HomeController = () => import('#controllers/home_controller')
 const ToogleThemeController = () => import('#controllers/me/toggle_theme_controller')
+const LoginController = () => import('#controllers/auth/login_controller')
+const RegisterController = () => import('#controllers/auth/register_controller')
 
 router.get('/', [HomeController, 'render']).as('home.index')
 router.get('/about', (ctx) => ctx.inertia.render('about'))
+
+router.get('/login', [LoginController, 'render']).as('login.index')
+router.get('/register', [RegisterController, 'render']).as('register.index')
 
 router
   .group(() => {
