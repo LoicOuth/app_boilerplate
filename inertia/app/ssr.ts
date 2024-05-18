@@ -2,7 +2,7 @@ import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { renderToString } from '@vue/server-renderer'
 import { createSSRApp, h, type DefineComponent } from 'vue'
-import AppLayout from '~/layouts/app.layout.vue'
+import PublicLayout from '~/layouts/public.layout.vue'
 import AuthLayout from '~/layouts/auth.layout.vue'
 
 export default function render(page: any) {
@@ -20,8 +20,8 @@ export default function render(page: any) {
 
         if (name.includes('auth')) {
           layout = AuthLayout
-        } else {
-          layout = AppLayout
+        } else if (name.includes('public')) {
+          layout = PublicLayout
         }
 
         module.default.layout = layout

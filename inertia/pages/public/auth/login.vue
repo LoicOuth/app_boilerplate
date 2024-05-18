@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3'
+import { Head, Link, useForm } from '@inertiajs/vue3'
 import GoogleIcon from '~/assets/images/google_icon.vue'
 import { Button } from '~/components/shared/ui/button'
 import { Input } from '~/components/shared/ui/input'
 import { Label } from '~/components/shared/ui/label'
 import { Separator } from '~/components/shared/ui/separator'
+
+const formData = useForm({
+  email: '',
+  password: '',
+})
 </script>
 
 <template>
@@ -19,16 +24,35 @@ import { Separator } from '~/components/shared/ui/separator'
 
     <div class="flex flex-col gap-2">
       <Label for="email">Addresse email</Label>
-      <Input id="email" type="email" placeholder="m@example.com" required />
+      <Input
+        v-model="formData.email"
+        id="email"
+        type="email"
+        placeholder="m@example.com"
+        required
+      />
+      <span v-if="formData.errors.email" class="text-red-500 text-xs">
+        {{ formData.errors.email[0] }}
+      </span>
     </div>
     <div class="flex flex-col gap-2">
       <div class="flex items-center">
         <Label for="password">Mot de passe</Label>
         <a href="#" class="ml-auto inline-block text-sm underline"> Mot de passe oublié ? </a>
       </div>
-      <Input id="password" type="password" required />
+      <Input v-model="formData.password" id="password" type="password" required />
+      <span v-if="formData.errors.password" class="text-red-500 text-xs">
+        {{ formData.errors.password[0] }}
+      </span>
     </div>
-    <Button type="submit" class="w-full"> Se connecter </Button>
+    <Button
+      type="submit"
+      class="w-full"
+      :loading="formData.processing"
+      @click="formData.post('login')"
+    >
+      Se connecter
+    </Button>
     <div class="mt-2 text-center text-sm">
       Vous n'avez pas encore de compte ?
       <Link href="/register" class="underline"> s'enregistrer </Link>

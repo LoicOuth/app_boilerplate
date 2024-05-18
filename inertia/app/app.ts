@@ -5,8 +5,9 @@ import { createSSRApp, h } from 'vue'
 import type { DefineComponent } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
-import AppLayout from '~/layouts/app.layout.vue'
+import PublicLayout from '~/layouts/public.layout.vue'
 import AuthLayout from '~/layouts/auth.layout.vue'
+import AppLayout from '~/layouts/app.layout.vue'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 
@@ -22,12 +23,12 @@ createInertiaApp({
     )
 
     page.then((module) => {
-      let layout = module.default.layout
+      let layout = AppLayout
 
       if (name.includes('auth')) {
         layout = AuthLayout
-      } else {
-        layout = AppLayout
+      } else if (name.includes('public')) {
+        layout = PublicLayout
       }
 
       module.default.layout = layout
