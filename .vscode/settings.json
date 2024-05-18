@@ -1,0 +1,4 @@
+{
+  //To remove warning on taiwind rules
+  "css.lint.unknownAtRules": "ignore"
+}
