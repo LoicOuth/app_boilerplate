@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html class={{session.get("theme") === "dark" ? "dark" : ""}}>
-
+<html class={{request.plainCookie('theme') || 'dark'}}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

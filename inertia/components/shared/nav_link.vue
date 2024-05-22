@@ -9,6 +9,7 @@ const isActive = computed(() => usePage().url === props.to)
 
 <template>
   <Link
+    as="a"
     :href="props.to"
     class="transition-colors hover:text-foreground/80 text-foreground/60 font-semibold"
     :class="{ '!text-foreground': isActive }"

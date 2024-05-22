@@ -3,4 +3,4 @@ export enum Theme {
   Light = 'light',
 }
 
-export const ThemSessionKey = 'theme'
+export const ThemCoookieKey = 'theme'

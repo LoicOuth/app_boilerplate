@@ -1,5 +1,5 @@
+import { ThemCoookieKey, Theme } from '#types/theme'
 import { defineConfig } from '@adonisjs/inertia'
-import { ThemSessionKey, Theme } from '#types/theme'
 
 export default defineConfig({
   /**
@@ -11,8 +11,16 @@ export default defineConfig({
    * Data that should be shared with all rendered pages
    */
   sharedData: {
-    errors: (ctx) => ctx.session?.flashMessages.get('errors'),
-    theme: (ctx) => ctx.session?.get(ThemSessionKey) || Theme.Dark,
+    errors: ({ session }) => session?.flashMessages.get('errors'),
+    user: async ({ auth }) => {
+      await auth.check()
+
+      return auth.user
+    },
+    theme: ({ request }) =>
+      request.plainCookie(ThemCoookieKey, {
+        encoded: false,
+      }) || Theme.Dark,
   },
 
   /**
@@ -20,6 +28,6 @@ export default defineConfig({
    */
   ssr: {
     enabled: true,
-    pages: ['home', 'auth/login', 'auth/register'],
+    pages: (_, page) => page.startsWith('public'),
   },
 })

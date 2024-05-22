@@ -16,15 +16,13 @@ export default function render(page: any) {
       )
 
       currentPage.then((module) => {
-        let layout = module.default.layout
-
-        if (name.includes('auth')) {
-          layout = AuthLayout
-        } else if (name.includes('public')) {
-          layout = PublicLayout
+        if (module.default.layout === undefined) {
+          if (name.includes('auth')) {
+            module.default.layout = AuthLayout
+          } else if (name.includes('public')) {
+            module.default.layout = PublicLayout
+          }
         }
-
-        module.default.layout = layout
       })
 
       return currentPage
