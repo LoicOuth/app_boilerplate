@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { Head, Link, useForm } from '@inertiajs/vue3'
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3'
+import { TriangleAlertIcon } from 'lucide-vue-next'
+import { computed } from 'vue'
 import GoogleIcon from '~/assets/images/google_icon.vue'
+import { Alert, AlertDescription, AlertTitle } from '~/components/shared/ui/alert'
 import { Button } from '~/components/shared/ui/button'
 import { Input } from '~/components/shared/ui/input'
 import { Label } from '~/components/shared/ui/label'
@@ -10,11 +13,21 @@ const formData = useForm({
   email: '',
   password: '',
 })
+
+const authError = computed(() => usePage<{ authError: boolean }>().props.authError)
 </script>
 
 <template>
   <Head title="Se connecter" />
   <div class="flex flex-col gap-5">
+    <Alert v-if="authError" variant="destructive">
+      <AlertTitle class="flex items-center">
+        <TriangleAlertIcon class="mr-2" />
+        Erreur de connexion
+      </AlertTitle>
+      <AlertDescription>Vérifier vos identifiants</AlertDescription>
+    </Alert>
+
     <Button variant="outline">
       <GoogleIcon class="mr-2" />
       Se connecter avec google

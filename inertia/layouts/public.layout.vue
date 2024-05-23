@@ -126,7 +126,7 @@ const handleLogout = () => {
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem @click="showLogoutDialog = true">
-                <LogOutIcon class="mr-2 text-red-500" />
+                <LogOutIcon class="mr-2 text-destructive" />
                 Se déconnecter
               </DropdownMenuItem>
             </DropdownMenuContent>

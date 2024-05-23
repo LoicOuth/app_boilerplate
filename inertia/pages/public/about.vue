@@ -3,5 +3,5 @@ import { Head } from '@inertiajs/vue3'
 </script>
 
 <template>
-  <Head title="about" />
+  <Head title="A propos" />
 </template>

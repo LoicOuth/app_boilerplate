@@ -12,6 +12,7 @@ export default defineConfig({
    */
   sharedData: {
     errors: ({ session }) => session?.flashMessages.get('errors'),
+    authError: ({ session }) => !!session?.flashMessages.get('errorsBag.E_INVALID_CREDENTIALS'),
     user: async ({ auth }) => {
       await auth.check()
 
