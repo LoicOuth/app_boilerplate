@@ -40,6 +40,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '~/components/shared/ui/alert-dialog'
+import Notification from '~/components/notifications/notification.vue'
+import { Toaster } from '~/components/shared/ui/sonner'
 
 const { mdAndDown, mdAndUp } = useScreenMediaQuery()
 const { theme, user } = useUser()
@@ -142,10 +144,13 @@ const handleLogout = () => {
             <SunIcon v-if="isDark" />
             <MoonIcon v-else />
           </Button>
+          <Notification v-if="user" />
         </div>
       </div>
     </header>
     <div class="flex-1 bg-background">
+      <Toaster />
+
       <main class="container">
         <slot />
       </main>

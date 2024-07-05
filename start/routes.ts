@@ -34,6 +34,11 @@ router
   .middleware([middleware.auth()])
 
 router
+  .post('/notification', [HomeController, 'sendNotif'])
+  .as('notif')
+  .middleware([middleware.auth()])
+
+router
   .group(() => {
     router.get('/dashboard', [DashboardController, 'render']).as('dashboard.index')
   })

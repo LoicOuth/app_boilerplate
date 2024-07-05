@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3'
+import { Head, router } from '@inertiajs/vue3'
 import { Button } from '~/components/shared/ui/button'
 </script>
 
@@ -15,4 +15,6 @@ import { Button } from '~/components/shared/ui/button'
     <Button>Voir ici</Button>
     <Button variant="outline">Voir La</Button>
   </div>
+
+  <Button @click="router.post('/notification')">Send notif</Button>
 </template>
