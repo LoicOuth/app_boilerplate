@@ -1,7 +1,7 @@
 /// <reference path="../../adonisrc.ts" />
 
 import '~/assets/css/index.css'
-import { createSSRApp, h } from 'vue'
+import { createApp, createSSRApp, h } from 'vue'
 import type { DefineComponent } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
@@ -38,7 +38,9 @@ createInertiaApp({
   },
 
   setup({ el, App, props, plugin }) {
-    createSSRApp({ render: () => h(App, props) })
+    //FIXME: Remove SSR temporaly because some hydratation issues
+    // createSSRApp({ render: () => h(App, props) })
+    createApp({ render: () => h(App, props) })
       .use(plugin)
       .mount(el)
   },

@@ -28,7 +28,8 @@ export default defineConfig({
    * Options for the server-side rendering
    */
   ssr: {
-    enabled: true,
+    //FIXME: Remove SSR temporaly because some hydratation issues
+    enabled: false,
     pages: (_, page) => page.startsWith('public'),
   },
 })
