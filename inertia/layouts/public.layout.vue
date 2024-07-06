@@ -1,14 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import {
-  MenuIcon,
-  LogInIcon,
-  SunIcon,
-  MoonIcon,
-  LayoutDashboardIcon,
-  UserRoundCogIcon,
-  LogOutIcon,
-} from 'lucide-vue-next'
+import { ref } from 'vue'
+import { MenuIcon, LogInIcon } from 'lucide-vue-next'
 import {
   Sheet,
   SheetContent,
@@ -18,71 +10,18 @@ import {
 } from '~/components/shared/ui/sheet'
 import { Button } from '~/components/shared/ui/button'
 import NavLink from '~/components/shared/nav_link.vue'
-import { Link, router } from '@inertiajs/vue3'
-import { ThemCoookieKey, Theme } from '#types/theme'
+import { Link } from '@inertiajs/vue3'
 import { useScreenMediaQuery } from '~/composables/use_screen_media_query'
 import { useUser } from '~/composables/use_user'
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/shared/ui/avatar'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '~/components/shared/ui/dropdown-menu'
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '~/components/shared/ui/alert-dialog'
-import Notification from '~/components/notifications/notification.vue'
+import Notification from '~/components/shared/notification.vue'
 import { Toaster } from '~/components/shared/ui/sonner'
+import Theme from '~/components/shared/theme.vue'
+import UserMenu from '~/components/shared/userMenu.vue'
 
 const { mdAndDown, mdAndUp } = useScreenMediaQuery()
-const { theme, user } = useUser()
+const { user } = useUser()
 
 const isOpen = ref(false)
-const isDark = ref(theme.value === Theme.Dark)
-const showLogoutDialog = ref(false)
-const logoutProcessing = ref(false)
-
-const userInitiale = computed(
-  () =>
-    user.value &&
-    `${user.value.firstName.charAt(0).toUpperCase()} ${user.value.lastName.charAt(0).toUpperCase()}`
-)
-
-const toggleTheme = () => {
-  if (!isDark.value && !document.documentElement.classList.contains('dark')) {
-    document.documentElement.classList.add('dark')
-    document.cookie = `${ThemCoookieKey}=${Theme.Dark}; SameSite=lax;`
-    isDark.value = true
-  } else if (isDark.value && document.documentElement.classList.contains('dark')) {
-    document.documentElement.classList.remove('dark')
-    document.cookie = `${ThemCoookieKey}=${Theme.Light}; SameSite=lax;`
-    isDark.value = false
-  }
-}
-const handleLogout = () => {
-  logoutProcessing.value = true
-  router.post(
-    '/logout',
-    {},
-    {
-      onSuccess: () => {
-        showLogoutDialog.value = false
-      },
-      onFinish: () => {
-        logoutProcessing.value = false
-      },
-    }
-  )
-}
 </script>
 
 <template>
@@ -108,42 +47,14 @@ const handleLogout = () => {
         </template>
 
         <div class="flex flex-1 items-center space-x-2 justify-end">
-          <DropdownMenu v-if="user">
-            <DropdownMenuTrigger>
-              <Avatar>
-                <AvatarImage :src="user.avatar || ''" />
-                <AvatarFallback>{{ userInitiale }}</AvatarFallback>
-              </Avatar>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent class="min-w-52">
-              <DropdownMenuItem as-child>
-                <Link href="/dashboard">
-                  <LayoutDashboardIcon class="mr-2" />
-                  Dashboard
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <UserRoundCogIcon class="mr-2" />
-                Mon compte
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem @click="showLogoutDialog = true">
-                <LogOutIcon class="mr-2 text-destructive" />
-                Se déconnecter
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
+          <UserMenu v-if="user" />
           <Button v-else variant="ghost" as-child>
             <Link as="a" href="/login">
               <LogInIcon :size="20" class="mr-2" />
               <span>Se connecter</span>
             </Link>
           </Button>
-          <Button variant="ghost" size="icon" @click="toggleTheme()">
-            <SunIcon v-if="isDark" />
-            <MoonIcon v-else />
-          </Button>
+          <Theme />
           <Notification v-if="user" />
         </div>
       </div>
@@ -156,23 +67,4 @@ const handleLogout = () => {
       </main>
     </div>
   </div>
-
-  <AlertDialog :open="showLogoutDialog">
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>Voulez-vous vraiment vous déconnectez ?</AlertDialogTitle>
-        <AlertDialogDescription>
-          Une fois déconnecter vous n'aurez plus accès a l'application
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel @click="showLogoutDialog = false">Annuler</AlertDialogCancel>
-        <AlertDialogAction as-child>
-          <Button variant="destructive" :loading="logoutProcessing" @click="handleLogout()">
-            Se déconnecter
-          </Button>
-        </AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>
 </template>

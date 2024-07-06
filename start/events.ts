@@ -9,9 +9,8 @@ declare module '@adonisjs/core/types' {
 }
 
 emitter.on('new:notification', function (notification) {
-  transmit.broadcast(`users/${notification.userId}`, {
-    id: notification.id,
-    title: notification.value.title,
-    content: notification.value.content,
+  console.log(notification.toJSON())
+  transmit.broadcast(`users/${notification.userId}/notifications`, {
+    notification: notification.toJSON(),
   })
 })
