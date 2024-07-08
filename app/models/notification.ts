@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { afterCreate, BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import { afterCreate, afterDelete, BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import { type DefaultValueInterface, type NotificationType } from '#types/notification'
 import User from '#models/user'
 import { type BelongsTo } from '@adonisjs/lucid/types/relations'
@@ -41,6 +41,8 @@ export default class Notification extends BaseModel {
 
   async markAsRead(this: Notification) {
     await this.merge({ readAt: DateTime.now() }).save()
+
+    emitter.emit('read:notification', this)
   }
 
   async markAsUnread(this: Notification) {
@@ -53,5 +55,10 @@ export default class Notification extends BaseModel {
   @afterCreate()
   static newNotification(notification: Notification) {
     emitter.emit('new:notification', notification)
+  }
+
+  @afterDelete()
+  static deleteNotification(notification: Notification) {
+    emitter.emit('delete:notification', notification)
   }
 }

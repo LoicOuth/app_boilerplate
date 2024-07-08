@@ -11,6 +11,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 const HomeController = () => import('#controllers/home_controller')
 const LoginController = () => import('#controllers/auth/login_controller')
+const NotificationsController = () => import('#controllers/me/notifications_controller')
 const LogoutController = () => import('#controllers/auth/logout_controller')
 
 const RegisterController = () => import('#controllers/auth/register_controller')
@@ -33,9 +34,14 @@ router
   .as('logout.handle')
   .middleware([middleware.auth()])
 
+//Notifications
 router
-  .post('/notification', [HomeController, 'sendNotif'])
-  .as('notif')
+  .group(() => {
+    router.post('/', [NotificationsController, 'sendNotif']).as('notif')
+    router.patch('/:id', [NotificationsController, 'markAsRead']).as('notif.read')
+    router.delete('/:id', [NotificationsController, 'delete']).as('notif.delete')
+  })
+  .prefix('/notifications')
   .middleware([middleware.auth()])
 
 router

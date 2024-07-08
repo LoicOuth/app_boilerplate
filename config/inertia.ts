@@ -1,7 +1,7 @@
 import { ThemCoookieKey, Theme } from '#types/theme'
 import { defineConfig } from '@adonisjs/inertia'
 
-export default defineConfig({
+const inertiaConfig = defineConfig({
   /**
    * Path to the Edge view that will be used as the root view for Inertia responses
    */
@@ -32,3 +32,14 @@ export default defineConfig({
     pages: (_, page) => page.startsWith('public'),
   },
 })
+
+export default inertiaConfig
+
+//FIXME: Don't work fix later
+// declare module '@adonisjs/inertia/types' {
+//   export interface SharedProps extends InferSharedProps<typeof inertiaConfig> {
+//     // If necessary, you can also manually add some shared props,
+//     // such as those shared from a middleware for example
+//     propsSharedFromAMiddleware: number;
+//   }
+// }

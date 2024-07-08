@@ -56,4 +56,16 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background rounded;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded bg-foreground;
+  }
 }

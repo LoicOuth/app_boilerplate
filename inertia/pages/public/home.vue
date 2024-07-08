@@ -16,5 +16,5 @@ import { Button } from '~/components/shared/ui/button'
     <Button variant="outline">Voir La</Button>
   </div>
 
-  <Button @click="router.post('/notification')">Send notif</Button>
+  <Button @click="router.post('/notifications')">Send notif</Button>
 </template>
