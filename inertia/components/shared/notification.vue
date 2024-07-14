@@ -69,11 +69,11 @@ import { computed, onMounted, ref } from 'vue'
 import { toast } from 'vue-sonner'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 import { router } from '@inertiajs/vue3'
-import { NotificationInertia } from '#types/notification'
+import { NotificationPresenter } from '#notifications/presenters/notification_presenter'
 
 const { user } = useUser()
 
-const notifications = ref<NotificationInertia[]>([])
+const notifications = ref<NotificationPresenter[]>([])
 const showActions = ref<number | null>(null)
 
 const unreadNotifications = computed(
@@ -96,6 +96,7 @@ onMounted(async () => {
   await subscription.create()
 
   subscription.onMessage((message: any) => {
+    console.log(message)
     if (message.notifications) {
       notifications.value = user.value ? [...message.notifications] : []
     } else if (message.readNotification) {

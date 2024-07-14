@@ -1,9 +1,13 @@
 import { DateTime } from 'luxon'
 import { afterCreate, afterDelete, BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
-import { type DefaultValueInterface, type NotificationType } from '#types/notification'
-import User from '#models/user'
+import {
+  type DefaultValueInterface,
+  type NotificationType,
+} from '#notifications/types/notification_type'
+import User from '#auth/models/user'
 import { type BelongsTo } from '@adonisjs/lucid/types/relations'
 import emitter from '@adonisjs/core/services/emitter'
+import { NotificationPresenter } from '#notifications/presenters/notification_presenter'
 
 export default class Notification extends BaseModel {
   @column({ isPrimary: true })
@@ -31,14 +35,6 @@ export default class Notification extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  get read() {
-    return Boolean(this.readAt)
-  }
-
-  get unread() {
-    return !this.readAt
-  }
-
   async markAsRead(this: Notification) {
     await this.merge({ readAt: DateTime.now() }).save()
 
@@ -60,5 +56,9 @@ export default class Notification extends BaseModel {
   @afterDelete()
   static deleteNotification(notification: Notification) {
     emitter.emit('delete:notification', notification)
+  }
+
+  projection() {
+    return new NotificationPresenter(this)
   }
 }

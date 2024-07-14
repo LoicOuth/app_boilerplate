@@ -3,10 +3,11 @@ import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
-import Notification from '#models/notification'
+import Notification from '#notifications/models/notification'
 import { type HasMany } from '@adonisjs/lucid/types/relations'
-import NotificationService from '#services/notification_service'
-import { NotificationContract } from '#types/notification'
+import NotificationService from '#notifications/services/notification_service'
+import { NotificationContract } from '#notifications/types/notification_contract'
+import { UserPresenter } from '#me/presenters/user_presenter'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -57,5 +58,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   async notify(this: User, notification: NotificationContract) {
     await NotificationService.send(this, notification)
+  }
+
+  projection() {
+    return new UserPresenter(this)
   }
 }

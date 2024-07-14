@@ -1,6 +1,5 @@
-import Notification from '#models/notification'
-import emitter from '@adonisjs/core/services/emitter'
-import transmit from '@adonisjs/transmit/services/main'
+import Notification from '#notifications/models/notification'
+import '#notifications/events/notification_events'
 
 declare module '@adonisjs/core/types' {
   interface EventsList {
@@ -9,21 +8,3 @@ declare module '@adonisjs/core/types' {
     'delete:notification': Notification
   }
 }
-
-emitter.on('new:notification', function (notification) {
-  transmit.broadcast(`users/${notification.userId}/notifications`, {
-    notification: notification.toJSON(),
-  })
-})
-
-emitter.on('read:notification', function (notification) {
-  transmit.broadcast(`users/${notification.userId}/notifications`, {
-    readNotification: notification.toJSON(),
-  })
-})
-
-emitter.on('delete:notification', function (notification) {
-  transmit.broadcast(`users/${notification.userId}/notifications`, {
-    deleteNotification: notification.id,
-  })
-})

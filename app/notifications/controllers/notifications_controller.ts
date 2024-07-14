@@ -1,4 +1,4 @@
-import Notification from '#models/notification'
+import Notification from '#notifications/models/notification'
 import { HttpContext } from '@adonisjs/core/http'
 import DefaultNotification from '#notifications/default_notification'
 

@@ -1,5 +1,7 @@
+import { UserPresenter } from '#me/presenters/user_presenter'
 import { ThemCoookieKey, Theme } from '#types/theme'
 import { defineConfig } from '@adonisjs/inertia'
+import '@adonisjs/inertia/types'
 
 const inertiaConfig = defineConfig({
   /**
@@ -15,7 +17,7 @@ const inertiaConfig = defineConfig({
     authError: ({ session }) => !!session?.flashMessages.get('errorsBag.E_INVALID_CREDENTIALS'),
     user: async ({ auth }) => {
       await auth.check()
-      return auth.user
+      return auth.user?.projection()
     },
     theme: ({ request }) =>
       request.plainCookie(ThemCoookieKey, {
@@ -35,11 +37,10 @@ const inertiaConfig = defineConfig({
 
 export default inertiaConfig
 
-//FIXME: Don't work fix later
-// declare module '@adonisjs/inertia/types' {
-//   export interface SharedProps extends InferSharedProps<typeof inertiaConfig> {
-//     // If necessary, you can also manually add some shared props,
-//     // such as those shared from a middleware for example
-//     propsSharedFromAMiddleware: number;
-//   }
-// }
+declare module '@adonisjs/inertia/types' {
+  export interface SharedProps extends Record<string, any> {
+    user?: UserPresenter
+    theme: Theme
+    authError?: boolean
+  }
+}

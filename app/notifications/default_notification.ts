@@ -1,6 +1,7 @@
-import Notification from '#models/notification'
-import User from '#models/user'
-import { DefaultValueInterface, NotificationContract } from '#types/notification'
+import Notification from '#notifications/models/notification'
+import User from '#auth/models/user'
+import { DefaultValueInterface } from '#notifications/types/notification_type'
+import { NotificationContract } from '#notifications/types/notification_contract'
 
 export default class DefaultNotification implements NotificationContract {
   get via(): 'email' | 'database' {

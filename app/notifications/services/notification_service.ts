@@ -1,5 +1,5 @@
-import User from '#models/user'
-import { NotificationContract } from '#types/notification'
+import User from '#auth/models/user'
+import { NotificationContract } from '#notifications/types/notification_contract'
 
 export default class NotificationService {
   static async send(users: User | User[], notification: NotificationContract) {
