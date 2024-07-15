@@ -71,6 +71,12 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/t
 import { router } from '@inertiajs/vue3'
 import { NotificationPresenter } from '#notifications/presenters/notification_presenter'
 
+type NotificationEvent =
+  | { notifications: NotificationPresenter[] }
+  | { readNotification: NotificationPresenter }
+  | { deleteNotification: number }
+  | { notification: NotificationPresenter }
+
 const { user } = useUser()
 
 const notifications = ref<NotificationPresenter[]>([])
@@ -95,17 +101,16 @@ onMounted(async () => {
 
   await subscription.create()
 
-  subscription.onMessage((message: any) => {
-    console.log(message)
-    if (message.notifications) {
+  subscription.onMessage((message: NotificationEvent) => {
+    if ('notifications' in message) {
       notifications.value = user.value ? [...message.notifications] : []
-    } else if (message.readNotification) {
+    } else if ('readNotification' in message) {
       const index = notifications.value.findIndex(
         (notification) => notification.id === message.readNotification.id
       )
 
       notifications.value[index] = message.readNotification
-    } else if (message.deleteNotification) {
+    } else if ('deleteNotification' in message) {
       const index = notifications.value.findIndex(
         (notification) => notification.id === message.deleteNotification
       )
