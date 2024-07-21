@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, Link, useForm, usePage } from '@inertiajs/vue3'
+import { Head, Link, useForm, usePage, router } from '@inertiajs/vue3'
 import { TriangleAlertIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import GoogleIcon from '~/assets/images/google_icon.vue'
@@ -14,13 +14,14 @@ const formData = useForm({
   password: '',
 })
 
-const authError = computed(() => usePage<{ authError: boolean }>().props.authError)
+const authError = computed(() => usePage<{ authError?: boolean }>().props.authError)
+const toastError = computed(() => usePage<{ toastError?: string }>().props.toastError)
 </script>
 
 <template>
   <Head title="Se connecter" />
   <div class="flex flex-col gap-5">
-    <Alert v-if="authError" variant="destructive">
+    <Alert v-if="!!authError" variant="destructive">
       <AlertTitle class="flex items-center">
         <TriangleAlertIcon class="mr-2" />
         Erreur de connexion
@@ -28,8 +29,16 @@ const authError = computed(() => usePage<{ authError: boolean }>().props.authErr
       <AlertDescription>Vérifier vos identifiants</AlertDescription>
     </Alert>
 
-    <Button variant="outline">
-      <GoogleIcon class="mr-2" />
+    <Alert v-if="!!toastError" variant="destructive">
+      <AlertTitle class="flex items-center">
+        <TriangleAlertIcon class="mr-2" />
+        Erreur de connexion
+      </AlertTitle>
+      <AlertDescription>{{ toastError }}</AlertDescription>
+    </Alert>
+
+    <Button variant="outline" @click="router.get('/google/redirect')">
+      <GoogleIcon class="mr-3" />
       Se connecter avec google
     </Button>
 

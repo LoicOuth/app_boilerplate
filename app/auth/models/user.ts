@@ -8,6 +8,7 @@ import { type HasMany } from '@adonisjs/lucid/types/relations'
 import NotificationService from '#notifications/services/notification_service'
 import { NotificationContract } from '#notifications/types/notification_contract'
 import { UserPresenter } from '#me/presenters/user_presenter'
+import AuthProvider from '#auth/models/auth_provider'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -41,6 +42,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @hasMany(() => Notification)
   declare notifications: HasMany<typeof Notification>
+
+  @hasMany(() => AuthProvider)
+  declare authProviders: HasMany<typeof AuthProvider>
 
   async unreadNotifications(this: User) {
     return await this.related('notifications')
