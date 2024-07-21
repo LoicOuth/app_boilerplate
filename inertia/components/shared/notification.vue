@@ -3,7 +3,10 @@
     <DropdownMenuTrigger>
       <Button variant="ghost" size="icon" class="relative">
         <BellIcon />
-        <div class="absolute h-5 w-5 bg-red-500 text rounded-full top-0 right-0 text-white">
+        <div
+          v-if="unreadNotifications > 0"
+          class="absolute h-5 w-5 bg-red-500 text rounded-full top-0 right-0 text-white"
+        >
           {{ unreadNotifications }}
         </div>
       </Button>
