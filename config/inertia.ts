@@ -19,7 +19,7 @@ const inertiaConfig = defineConfig({
     toastSuccess: ({ session }) => session.flashMessages.get('toast_success'),
     user: async ({ auth }) => {
       await auth.check()
-      return auth.user?.projection()
+      return await auth.user?.projection()
     },
     theme: ({ request }) =>
       request.plainCookie(ThemCoookieKey, {

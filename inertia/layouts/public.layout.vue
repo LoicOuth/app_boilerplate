@@ -15,7 +15,7 @@ import { useScreenMediaQuery } from '~/composables/use_screen_media_query'
 import { useUser } from '~/composables/use_user'
 import Notification from '~/components/shared/notification.vue'
 import { Toaster } from '~/components/shared/ui/sonner'
-import UserMenu from '~/components/shared/menu/userMenu.vue'
+import UserMenu from '~/components/shared/menu/user_menu.vue'
 
 const { mdAndDown, mdAndUp } = useScreenMediaQuery()
 const { user } = useUser()

@@ -28,7 +28,7 @@ createInertiaApp({
 
       if (name.includes('auth')) {
         layout = AuthLayout
-      } else if (name.includes('public')) {
+      } else if (name.includes('public') || name.includes('me')) {
         layout = PublicLayout
       }
 

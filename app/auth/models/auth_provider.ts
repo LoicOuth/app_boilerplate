@@ -2,6 +2,8 @@ import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import User from '#auth/models/user'
 import { type BelongsTo } from '@adonisjs/lucid/types/relations'
+import { AuthProviderPresenter } from '#auth/presenters/auth_provider_presenter'
+import { type AuthProviderNames } from '#types/common'
 
 export default class AuthProvider extends BaseModel {
   @column({ isPrimary: true })
@@ -11,7 +13,7 @@ export default class AuthProvider extends BaseModel {
   declare userId: number
 
   @column()
-  declare providerName: 'google'
+  declare providerName: AuthProviderNames
 
   @column()
   declare providerId: string
@@ -27,4 +29,8 @@ export default class AuthProvider extends BaseModel {
 
   @belongsTo(() => User)
   declare user: BelongsTo<typeof User>
+
+  projection() {
+    return new AuthProviderPresenter(this)
+  }
 }

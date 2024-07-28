@@ -19,7 +19,7 @@ export default function render(page: any) {
         if (module.default.layout === undefined) {
           if (name.includes('auth')) {
             module.default.layout = AuthLayout
-          } else if (name.includes('public')) {
+          } else if (name.includes('public') || name.includes('me')) {
             module.default.layout = PublicLayout
           }
         }

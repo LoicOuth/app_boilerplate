@@ -43,6 +43,10 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @hasMany(() => AuthProvider)
   declare authProviders: HasMany<typeof AuthProvider>
 
+  async connectedAuthProvider(this: User) {
+    return await this.related('authProviders').query().where('isConnectedWith', true).first()
+  }
+
   async unreadNotifications(this: User) {
     return await this.related('notifications')
       .query()
@@ -61,7 +65,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
     await NotificationService.send(this, notification)
   }
 
-  projection() {
-    return new UserPresenter(this)
+  async projection() {
+    return await UserPresenter.build(this)
   }
 }

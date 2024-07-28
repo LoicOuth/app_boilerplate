@@ -1,20 +1,3 @@
-<template>
-  <DropdownMenuSub>
-    <DropdownMenuSubTrigger>
-      <SunMoonIcon class="mr-2" />
-      Thème
-    </DropdownMenuSubTrigger>
-    <DropdownMenuPortal>
-      <DropdownMenuSubContent>
-        <DropdownMenuRadioGroup :model-value="theme" @update:model-value="toggleTheme()">
-          <DropdownMenuRadioItem :value="Theme.Dark"> Sombre </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem :value="Theme.Light"> Clair </DropdownMenuRadioItem>
-        </DropdownMenuRadioGroup>
-      </DropdownMenuSubContent>
-    </DropdownMenuPortal>
-  </DropdownMenuSub>
-</template>
-
 <script setup lang="ts">
 import { ThemCoookieKey, Theme } from '#types/theme'
 import { onMounted, ref } from 'vue'
@@ -50,3 +33,20 @@ onMounted(() => {
   }
 })
 </script>
+
+<template>
+  <DropdownMenuSub>
+    <DropdownMenuSubTrigger>
+      <SunMoonIcon class="mr-2" />
+      Thème
+    </DropdownMenuSubTrigger>
+    <DropdownMenuPortal>
+      <DropdownMenuSubContent>
+        <DropdownMenuRadioGroup :model-value="theme" @update:model-value="toggleTheme()">
+          <DropdownMenuRadioItem :value="Theme.Dark"> Sombre </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem :value="Theme.Light"> Clair </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuSubContent>
+    </DropdownMenuPortal>
+  </DropdownMenuSub>
+</template>
