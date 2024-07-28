@@ -24,7 +24,7 @@ const inertiaConfig = defineConfig({
     theme: ({ request }) =>
       request.plainCookie(ThemCoookieKey, {
         encoded: false,
-      }) || Theme.Dark,
+      }) ?? Theme.Dark,
   },
 
   /**

@@ -1,0 +1,52 @@
+<template>
+  <DropdownMenuSub>
+    <DropdownMenuSubTrigger>
+      <SunMoonIcon class="mr-2" />
+      Thème
+    </DropdownMenuSubTrigger>
+    <DropdownMenuPortal>
+      <DropdownMenuSubContent>
+        <DropdownMenuRadioGroup :model-value="theme" @update:model-value="toggleTheme()">
+          <DropdownMenuRadioItem :value="Theme.Dark"> Sombre </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem :value="Theme.Light"> Clair </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuSubContent>
+    </DropdownMenuPortal>
+  </DropdownMenuSub>
+</template>
+
+<script setup lang="ts">
+import { ThemCoookieKey, Theme } from '#types/theme'
+import { onMounted, ref } from 'vue'
+import {
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+} from '~/components/shared/ui/dropdown-menu'
+import { SunMoonIcon } from 'lucide-vue-next'
+
+const theme = ref<Theme>()
+
+const toggleTheme = () => {
+  if (theme.value === Theme.Light && !document.documentElement.classList.contains('dark')) {
+    document.documentElement.classList.add('dark')
+    document.cookie = `${ThemCoookieKey}=${Theme.Dark}; SameSite=lax;`
+    theme.value = Theme.Dark
+  } else if (theme.value === Theme.Dark && document.documentElement.classList.contains('dark')) {
+    document.documentElement.classList.remove('dark')
+    document.cookie = `${ThemCoookieKey}=${Theme.Light}; SameSite=lax;`
+    theme.value = Theme.Light
+  }
+}
+
+onMounted(() => {
+  if (document.documentElement.classList.contains('dark')) {
+    theme.value = Theme.Dark
+  } else if (!document.documentElement.classList.contains('dark')) {
+    theme.value = Theme.Light
+  }
+})
+</script>

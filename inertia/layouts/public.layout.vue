@@ -15,8 +15,7 @@ import { useScreenMediaQuery } from '~/composables/use_screen_media_query'
 import { useUser } from '~/composables/use_user'
 import Notification from '~/components/shared/notification.vue'
 import { Toaster } from '~/components/shared/ui/sonner'
-import Theme from '~/components/shared/theme.vue'
-import UserMenu from '~/components/shared/userMenu.vue'
+import UserMenu from '~/components/shared/menu/userMenu.vue'
 
 const { mdAndDown, mdAndUp } = useScreenMediaQuery()
 const { user } = useUser()
@@ -47,6 +46,7 @@ const isOpen = ref(false)
         </template>
 
         <div class="flex flex-1 items-center space-x-2 justify-end">
+          <Notification v-if="user" />
           <UserMenu v-if="user" />
           <Button v-else variant="ghost" as-child>
             <Link as="a" href="/login">
@@ -54,8 +54,6 @@ const isOpen = ref(false)
               <span>Se connecter</span>
             </Link>
           </Button>
-          <Theme />
-          <Notification v-if="user" />
         </div>
       </div>
     </header>

@@ -17,6 +17,7 @@
         <UserRoundCogIcon class="mr-2" />
         Mon compte
       </DropdownMenuItem>
+      <Theme />
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="showLogoutDialog = true">
         <LogOutIcon class="mr-2 text-destructive" />
@@ -47,14 +48,14 @@
 
 <script setup lang="ts">
 import { Link, router } from '@inertiajs/vue3'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/shared/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu'
+} from '~/components/shared/ui/dropdown-menu'
 import { LayoutDashboardIcon, LogOutIcon, UserRoundCogIcon } from 'lucide-vue-next'
 import {
   AlertDialog,
@@ -65,10 +66,11 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from './ui/alert-dialog'
-import { Button } from './ui/button'
+} from '~/components/shared/ui/alert-dialog'
+import { Button } from '~/components/shared/ui/button'
 import { computed, ref } from 'vue'
 import { useUser } from '~/composables/use_user'
+import Theme from '~/components/shared/menu/theme.vue'
 
 const { user } = useUser()
 

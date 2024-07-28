@@ -1,6 +1,8 @@
 import { type SharedProps } from '@adonisjs/inertia/types'
 import { usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+
+const isThemeSet = ref(false)
 
 export const useUser = () => {
   const shared = computed(() => usePage<SharedProps>().props)
@@ -10,5 +12,6 @@ export const useUser = () => {
   return {
     user,
     theme,
+    isThemeSet,
   }
 }
