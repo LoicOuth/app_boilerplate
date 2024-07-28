@@ -7,8 +7,7 @@ import { Label } from '~/components/shared/ui/label'
 import { Separator } from '~/components/shared/ui/separator'
 
 const formData = useForm({
-  firstName: '',
-  lastName: '',
+  name: '',
   email: '',
   password: '',
   password_confirmation: '',
@@ -27,21 +26,12 @@ const formData = useForm({
     <Separator />
 
     <div class="flex flex-col gap-4">
-      <div class="flex gap-4">
-        <div class="flex-1 flex flex-col gap-2">
-          <Label for="firstName">Prénom</Label>
-          <Input v-model="formData.firstName" id="firstName" placeholder="Max" required />
-          <span v-if="formData.errors.firstName" class="text-red-500 text-xs">
-            {{ formData.errors.firstName[0] }}
-          </span>
-        </div>
-        <div class="flex-1 flex flex-col gap-2">
-          <Label for="lastName">Nom de famille</Label>
-          <Input v-model="formData.lastName" id="lastName" placeholder="Robinson" required />
-          <span v-if="formData.errors.lastName" class="text-red-500 text-xs">
-            {{ formData.errors.lastName[0] }}
-          </span>
-        </div>
+      <div class="flex flex-col gap-2">
+        <Label for="name">Nom</Label>
+        <Input v-model="formData.name" id="name" placeholder="Joe Robinson" required />
+        <span v-if="formData.errors.name" class="text-red-500 text-xs">
+          {{ formData.errors.name[0] }}
+        </span>
       </div>
       <div class="flex flex-col gap-2">
         <Label for="email">Adresse email</Label>

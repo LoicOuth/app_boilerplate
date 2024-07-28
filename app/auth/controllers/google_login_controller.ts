@@ -33,11 +33,9 @@ export default class GoogleLoginController {
     }
 
     const googleUser = await google.user()
-    const nameSplited = googleUser.name.split(' ')
     const userData = {
       email: googleUser.email,
-      firstName: nameSplited[0],
-      lastName: nameSplited[1] || '',
+      name: googleUser.name,
       avatar: googleUser.avatarUrl,
       password: '',
     }

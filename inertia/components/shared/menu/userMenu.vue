@@ -77,11 +77,13 @@ const { user } = useUser()
 const showLogoutDialog = ref(false)
 const logoutProcessing = ref(false)
 
-const userInitiale = computed(
-  () =>
-    user.value &&
-    `${user.value.firstName.charAt(0).toUpperCase()} ${user.value.lastName.charAt(0).toUpperCase()}`
-)
+const userInitiale = computed(() => {
+  if (user.value) {
+    const userNameSplitted = user.value.name.split(' ')
+
+    return `${userNameSplitted[0].charAt(0).toUpperCase()} ${userNameSplitted[1]?.charAt(0).toUpperCase() || ''}`
+  }
+})
 
 const handleLogout = () => {
   logoutProcessing.value = true
