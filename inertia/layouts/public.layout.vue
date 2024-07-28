@@ -14,8 +14,8 @@ import { Link } from '@inertiajs/vue3'
 import { useScreenMediaQuery } from '~/composables/use_screen_media_query'
 import { useUser } from '~/composables/use_user'
 import Notification from '~/components/shared/notification.vue'
-import { Toaster } from '~/components/shared/ui/sonner'
 import UserMenu from '~/components/shared/menu/user_menu.vue'
+import Toast from '~/components/shared/toast.vue'
 
 const { mdAndDown, mdAndUp } = useScreenMediaQuery()
 const { user } = useUser()
@@ -58,9 +58,8 @@ const isOpen = ref(false)
       </div>
     </header>
     <div class="flex-1 bg-background">
-      <Toaster />
-
       <main class="container">
+        <Toast />
         <slot />
       </main>
     </div>

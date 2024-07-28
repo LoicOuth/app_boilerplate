@@ -15,8 +15,8 @@ const inertiaConfig = defineConfig({
   sharedData: {
     errors: ({ session }) => session?.flashMessages.get('errors'),
     authError: ({ session }) => !!session?.flashMessages.get('errorsBag.E_INVALID_CREDENTIALS'),
-    toastError: ({ session }) => session.flashMessages.get('toast_error'),
-    toastSuccess: ({ session }) => session.flashMessages.get('toast_success'),
+    toastError: ({ session }) => session.flashMessages.get('toast_error')?.message,
+    toastSuccess: ({ session }) => session.flashMessages.get('toast_success')?.message,
     user: async ({ auth }) => {
       await auth.check()
       return await auth.user?.projection()
