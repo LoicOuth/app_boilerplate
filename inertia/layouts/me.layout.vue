@@ -1,42 +1,19 @@
 <script setup lang="ts">
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '~/components/shared/ui/breadcrumb'
 import { Button } from '~/components/shared/ui/button'
-import { useProfileBreadcrumb } from '~/composables/use_breadcrumb'
 import { MonitorUpIcon, ShieldIcon, UserCogIcon } from 'lucide-vue-next'
 import { Link, usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { Separator } from '~/components/shared/ui/separator'
 import { useScreenMediaQuery } from '~/composables/use_screen_media_query'
+import Breadcrumb from '~/components/shared/breadcrumb.vue'
 
-const { breadcrumbProfileItems } = useProfileBreadcrumb()
 const { mdAndDown } = useScreenMediaQuery()
 
 const currentUrl = computed(() => usePage().url)
 </script>
 
 <template>
-  <Breadcrumb class="mt-3">
-    <BreadcrumbList>
-      <template v-for="(item, index) in breadcrumbProfileItems" :key="index">
-        <BreadcrumbItem>
-          <BreadcrumbLink v-if="index !== breadcrumbProfileItems.length - 1" as-child>
-            <Link as="a" :href="item.href" class="cursor-pointer">
-              {{ item.label }}
-            </Link>
-          </BreadcrumbLink>
-          <BreadcrumbPage v-else>{{ item.label }}</BreadcrumbPage>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator v-if="index !== breadcrumbProfileItems.length - 1" />
-      </template>
-    </BreadcrumbList>
-  </Breadcrumb>
+  <Breadcrumb />
 
   <div class="mt-10 pb-16">
     <div class="space-y-0.5">
