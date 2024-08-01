@@ -17,9 +17,9 @@ export default function render(page: any) {
 
       currentPage.then((module) => {
         if (module.default.layout === undefined) {
-          if (name.includes('auth')) {
+          if (name.includes('login') || name.includes('register')) {
             module.default.layout = AuthLayout
-          } else if (name.includes('public') || name.includes('me')) {
+          } else if ((name.includes('public') && !name.includes('auth')) || name.includes('me')) {
             module.default.layout = PublicLayout
           }
         }

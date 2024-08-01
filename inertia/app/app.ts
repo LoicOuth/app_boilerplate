@@ -26,9 +26,9 @@ createInertiaApp({
     page.then((module) => {
       let layout = AppLayout
 
-      if (name.includes('auth')) {
+      if (name.includes('login') || name.includes('register')) {
         layout = AuthLayout
-      } else if (name.includes('public') || name.includes('me')) {
+      } else if ((name.includes('public') && !name.includes('auth')) || name.includes('me')) {
         layout = PublicLayout
       }
 

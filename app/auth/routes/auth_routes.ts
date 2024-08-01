@@ -5,6 +5,8 @@ const GoogleLoginController = () => import('#auth/controllers/google_login_contr
 const LoginController = () => import('#auth/controllers/login_controller')
 const LogoutController = () => import('#auth/controllers/logout_controller')
 const RegisterController = () => import('#auth/controllers/register_controller')
+const ForgotPasswordController = () => import('#auth/controllers/forgot_password_controller')
+const ResetPasswordController = () => import('#auth/controllers/reset_password_controller')
 
 router
   .group(() => {
@@ -18,6 +20,16 @@ router
     */
     router.get('/google/redirect', [GoogleLoginController, 'redirect']).as('google.login.index')
     router.get('/google/callback', [GoogleLoginController, 'handle']).as('google.login.handle')
+
+    /*
+      FORGOT/RESET PASSWORD 
+    */
+    router.get('/password/forgot', [ForgotPasswordController, 'render']).as('forgot-password.index')
+    router
+      .post('/password/forgot', [ForgotPasswordController, 'handle'])
+      .as('forgot-password.handle')
+    router.get('/password/reset', [ResetPasswordController, 'render']).as('reset-password.index')
+    router.post('/password/reset', [ResetPasswordController, 'handle']).as('reset-password.handle')
   })
   .middleware([middleware.guest()])
 

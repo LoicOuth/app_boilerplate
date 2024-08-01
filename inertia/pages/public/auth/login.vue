@@ -60,7 +60,9 @@ const toastError = computed(() => usePage<{ toastError?: string }>().props.toast
     <div class="flex flex-col gap-2">
       <div class="flex items-center">
         <Label for="password">Mot de passe</Label>
-        <a href="#" class="ml-auto inline-block text-sm underline"> Mot de passe oublié ? </a>
+        <Link as="a" href="/forgot-password" class="ml-auto inline-block text-sm underline">
+          Mot de passe oublié ?
+        </Link>
       </div>
       <Input v-model="formData.password" id="password" type="password" required />
       <span v-if="formData.errors.password" class="text-red-500 text-xs">

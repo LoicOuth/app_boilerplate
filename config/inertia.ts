@@ -14,6 +14,7 @@ const inertiaConfig = defineConfig({
    */
   sharedData: {
     errors: ({ session }) => session?.flashMessages.get('errors'),
+    success: ({ session }) => session?.flashMessages.get('success'),
     authError: ({ session }) => !!session?.flashMessages.get('errorsBag.E_INVALID_CREDENTIALS'),
     toastError: ({ session }) => session.flashMessages.get('toast_error')?.message,
     toastSuccess: ({ session }) => session.flashMessages.get('toast_success')?.message,
@@ -46,5 +47,6 @@ declare module '@adonisjs/inertia/types' {
     authError?: boolean
     toastError?: string
     toastSuccess?: string
+    success?: any
   }
 }

@@ -31,6 +31,12 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column()
   declare avatar: string
 
+  @column()
+  declare resetToken?: string
+
+  @column()
+  declare resetTokenExpiry?: DateTime
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
