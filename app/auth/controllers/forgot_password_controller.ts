@@ -2,10 +2,10 @@ import vine from '@vinejs/vine'
 import { HttpContext } from '@adonisjs/core/http'
 import User from '#auth/models/user'
 import { assertExists } from '@adonisjs/core/helpers/assert'
-import string from '@adonisjs/core/helpers/string'
-import mail from '@adonisjs/mail/services/main'
-import { DateTime } from 'luxon'
-import ForgotPasswordMail from '#auth/mails/forgot_password_mail'
+import { inject } from '@adonisjs/core'
+import LoopService from '#core/services/loop_service'
+import router from '@adonisjs/core/services/router'
+import env from '#start/env'
 
 export default class ForgotPasswordController {
   static sendEmailValidator = vine.compile(
@@ -24,7 +24,8 @@ export default class ForgotPasswordController {
     return inertia.render('public/auth/forgot_password')
   }
 
-  async handle({ response, request, session }: HttpContext) {
+  @inject()
+  async handle({ response, request, session }: HttpContext, loop: LoopService) {
     const { email } = await request.validateUsing(ForgotPasswordController.sendEmailValidator)
 
     const user = await User.query().where('email', email).first()
@@ -37,16 +38,18 @@ export default class ForgotPasswordController {
       return response.redirect().back()
     }
 
-    const resetToken = string.generateRandom(60)
-
-    await user
-      .merge({
-        resetToken,
-        resetTokenExpiry: DateTime.now().plus({ hour: 1 }).toISO(), // 1 hour from now
-      })
-      .save()
-
-    await mail.send(new ForgotPasswordMail(resetToken, user))
+    await loop.sendTransactionalEmail({
+      email: user.email,
+      transactionalId: env.get('LOOP_FORGOT_PASSWORD_TRANSACTIONAL_ID'),
+      dataVariables: {
+        url: router
+          .builder()
+          .prefixUrl(env.get('APP_URL'))
+          .params({ id: user.id })
+          .makeSigned('reset-password.index', { expiresIn: '1 hour' }),
+        name: user.name,
+      },
+    })
 
     session.flash({ success: "L'email avec les informations a été envoyé" })
     return response.redirect().back()

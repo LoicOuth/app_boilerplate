@@ -60,7 +60,7 @@ const toastError = computed(() => usePage<{ toastError?: string }>().props.toast
     <div class="flex flex-col gap-2">
       <div class="flex items-center">
         <Label for="password">Mot de passe</Label>
-        <Link as="a" href="/forgot-password" class="ml-auto inline-block text-sm underline">
+        <Link as="a" href="/password/forgot" class="ml-auto inline-block text-sm underline">
           Mot de passe oublié ?
         </Link>
       </div>

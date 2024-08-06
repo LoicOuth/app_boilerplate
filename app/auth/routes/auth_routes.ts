@@ -28,7 +28,9 @@ router
     router
       .post('/password/forgot', [ForgotPasswordController, 'handle'])
       .as('forgot-password.handle')
-    router.get('/password/reset', [ResetPasswordController, 'render']).as('reset-password.index')
+    router
+      .get('/password/reset/:id', [ResetPasswordController, 'render'])
+      .as('reset-password.index')
     router.post('/password/reset', [ResetPasswordController, 'handle']).as('reset-password.handle')
   })
   .middleware([middleware.guest()])

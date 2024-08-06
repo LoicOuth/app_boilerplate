@@ -29,13 +29,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare password: string
 
   @column()
-  declare avatar: string
-
-  @column()
-  declare resetToken?: string
-
-  @column()
-  declare resetTokenExpiry?: DateTime
+  declare avatar?: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -53,25 +47,19 @@ export default class User extends compose(BaseModel, AuthFinder) {
     return await this.related('authProviders').query().where('isConnectedWith', true).first()
   }
 
-  async unreadNotifications(this: User) {
-    return await this.related('notifications')
-      .query()
-      .whereNull('readAt')
-      .orderBy('createdAt', 'desc')
+  unreadNotifications(this: User) {
+    return this.related('notifications').query().whereNull('readAt').orderBy('createdAt', 'desc')
   }
 
-  async readNotifications(this: User) {
-    return await this.related('notifications')
-      .query()
-      .whereNotNull('readAt')
-      .orderBy('createdAt', 'desc')
+  readNotifications(this: User) {
+    return this.related('notifications').query().whereNotNull('readAt').orderBy('createdAt', 'desc')
   }
 
   async notify(this: User, notification: NotificationContract) {
     await NotificationService.send(this, notification)
   }
 
-  async projection() {
-    return await UserPresenter.build(this)
+  projection() {
+    return UserPresenter.build(this)
   }
 }

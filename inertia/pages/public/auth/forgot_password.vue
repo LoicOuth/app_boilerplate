@@ -56,7 +56,7 @@ const formData = useForm({
             type="submit"
             class="w-full"
             :loading="formData.processing"
-            @click="formData.post('forgot-password')"
+            @click="formData.post('/password/forgot')"
           >
             Envoyer les instructions
           </Button>

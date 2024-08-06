@@ -1,5 +1,6 @@
 import AuthProvider from '#auth/models/auth_provider'
 import User from '#auth/models/user'
+import LoopService from '#core/services/loop_service'
 import { ToastService } from '#core/services/toast_service'
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
@@ -11,7 +12,7 @@ export default class GoogleLoginController {
   }
 
   @inject()
-  async handle({ ally, auth, response }: HttpContext, toast: ToastService) {
+  async handle({ ally, auth, response }: HttpContext, toast: ToastService, loop: LoopService) {
     const google = ally.use('google')
 
     if (google.accessDenied()) {
@@ -55,6 +56,13 @@ export default class GoogleLoginController {
     } else {
       user = await User.create(userData)
       await AuthProvider.create({ providerId: googleUser.id, userId: user.id })
+      const splittedName = user.name.split(' ')
+      await loop.createContact({
+        email: user.email,
+        userId: user.id.toString(),
+        firstName: splittedName[0],
+        lastName: splittedName[1],
+      })
     }
 
     await auth.use('web').login(user)

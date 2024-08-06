@@ -5,49 +5,27 @@ import User from '#auth/models/user'
 export default class ResetPasswordController {
   static sendEmailValidator = vine.compile(
     vine.object({
-      token: vine.string(),
+      id: vine.number(),
       password: vine.string().confirmed(),
     })
   )
 
-  private async checkToken(token: string) {
-    const user = await User.findBy('resetToken', token)
-
-    if (!user || (user.resetTokenExpiry && user.resetTokenExpiry.diffNow().milliseconds < 0)) {
-      return null
+  render({ inertia, request, session }: HttpContext) {
+    if (!request.hasValidSignature()) {
+      session.flash({ errors: 'La session a expiré veuillez réssayé' })
     }
 
-    return user
+    return inertia.render('public/auth/reset_password', {
+      id: request.param('id'),
+    })
   }
 
-  async render({ inertia, request, session, response }: HttpContext) {
-    const user = await this.checkToken(request.qs().token)
+  async handle({ request, response, auth }: HttpContext) {
+    const { password, id } = await request.validateUsing(ResetPasswordController.sendEmailValidator)
 
-    if (!user) {
-      session.flash({ errors: 'La session a expiré veuillez réssayé' })
-      return response.redirect().toRoute('forgot-password.index')
-    }
+    const user = await User.findOrFail(id)
 
-    return inertia.render('public/auth/reset_password')
-  }
-
-  async handle({ request, session, response, auth }: HttpContext) {
-    const { password, token } = await request.validateUsing(
-      ResetPasswordController.sendEmailValidator
-    )
-
-    const user = await this.checkToken(token)
-
-    if (!user) {
-      session.flash({ errors: 'La session a expiré veuillez réssayé' })
-      return response.redirect().back()
-    }
-
-    await user
-      .merge({
-        password,
-      })
-      .save()
+    await user.merge({ password }).save()
 
     await auth.use('web').login(user)
 

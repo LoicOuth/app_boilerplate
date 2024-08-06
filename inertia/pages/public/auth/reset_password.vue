@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useForm, Link, usePage } from '@inertiajs/vue3'
-import { ArrowLeftIcon, CheckCircleIcon } from 'lucide-vue-next'
+import { ArrowLeftIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
+import { Alert, AlertDescription } from '~/components/shared/ui/alert'
 import { Button } from '~/components/shared/ui/button'
 import {
   Card,
@@ -13,9 +14,16 @@ import {
 import { Input } from '~/components/shared/ui/input'
 import { Label } from '~/components/shared/ui/label'
 
+const errors = computed(() => usePage().props.errors)
+
+const props = defineProps({
+  id: { type: Number, required: true },
+})
+
 const formData = useForm({
+  id: props.id,
   password: '',
-  password_confirmation,
+  password_confirmation: '',
 })
 </script>
 
@@ -31,10 +39,15 @@ const formData = useForm({
         <CardTitle>Créer un nouveau mot de passe</CardTitle>
         <CardDescription>
           Votre nouveau mot de passe doit être différent du mot de passe utilisé précédemment.
+          <Alert v-if="errors" variant="destructive">
+            <AlertDescription>
+              {{ errors }}
+            </AlertDescription>
+          </Alert>
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div v-if="!success" class="flex flex-col gap-5">
+        <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-2">
             <Label for="password">Mot de passe</Label>
             <Input v-model="formData.password" id="password" type="password" required />
@@ -56,6 +69,7 @@ const formData = useForm({
             type="submit"
             class="w-full"
             :loading="formData.processing"
+            :disabled="errors"
             @click="formData.post('/password/reset')"
           >
             Rénitialiser le mot de passe

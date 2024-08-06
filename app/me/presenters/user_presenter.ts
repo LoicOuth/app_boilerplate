@@ -12,7 +12,7 @@ export class UserPresenter {
     this.id = user.id
     this.name = user.name
     this.email = user.email
-    this.avatar = user.avatar.includes('https') ? user.avatar : `/${user.avatar}`
+    this.avatar = user.avatar?.includes('https') ? user.avatar : `/${user.avatar}`
     this.createdAt = user.createdAt.toString()
   }
 
