@@ -11,6 +11,6 @@
   "framework": "vite",
   "aliases": {
     "components": "inertia/components/shared",
-    "utils": "inertia/utils"
+    "utils": "inertia/utils/shadcn.helper"
   }
 }
