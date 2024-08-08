@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { Head, Link, useForm, router } from '@inertiajs/vue3'
 import GoogleIcon from '~/assets/images/google_icon.vue'
-import { Button } from '~/components/shared/ui/button'
-import { Input } from '~/components/shared/ui/input'
-import { Label } from '~/components/shared/ui/label'
-import { Separator } from '~/components/shared/ui/separator'
 
 const formData = useForm({
   name: '',

@@ -1,22 +1,7 @@
 <script setup lang="ts">
 import { BellIcon, BellOffIcon, TrashIcon } from 'lucide-vue-next'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '~/components/shared/ui/dropdown-menu'
-import { Button } from '~/components/shared/ui/button'
 import { Transmit } from '@adonisjs/transmit-client'
-import { useUser } from '~/composables/use_user'
-import { computed, onMounted, ref } from 'vue'
 import { toast } from 'vue-sonner'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '~/components/shared/ui/tooltip'
-import { router } from '@inertiajs/vue3'
 import { NotificationPresenter } from '#notifications/presenters/notification_presenter'
 
 type NotificationEvent =

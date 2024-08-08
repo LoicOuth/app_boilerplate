@@ -1,18 +1,4 @@
 <script setup lang="ts">
-import { Head, useForm } from '@inertiajs/vue3'
-import { onMounted } from 'vue'
-import { Button } from '~/components/shared/ui/button'
-import { Input } from '~/components/shared/ui/input'
-import { Label } from '~/components/shared/ui/label'
-import { Separator } from '~/components/shared/ui/separator'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '~/components/shared/ui/tooltip'
-import { useProfileBreadcrumb } from '~/composables/use_breadcrumb'
-import { useUser } from '~/composables/use_user'
 import MeLayout from '~/layouts/me.layout.vue'
 
 const { setBreadCrumb } = useProfileBreadcrumb()

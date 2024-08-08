@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { Head, router } from '@inertiajs/vue3'
-import { Button } from '~/components/shared/ui/button'
-</script>
-
 <template>
   <Head title="Accueil" />
 

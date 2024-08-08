@@ -1,13 +1,6 @@
 <script setup lang="ts">
-import { Head, Link, useForm, usePage, router } from '@inertiajs/vue3'
 import { TriangleAlertIcon } from 'lucide-vue-next'
-import { computed } from 'vue'
 import GoogleIcon from '~/assets/images/google_icon.vue'
-import { Alert, AlertDescription, AlertTitle } from '~/components/shared/ui/alert'
-import { Button } from '~/components/shared/ui/button'
-import { Input } from '~/components/shared/ui/input'
-import { Label } from '~/components/shared/ui/label'
-import { Separator } from '~/components/shared/ui/separator'
 
 const formData = useForm({
   email: '',

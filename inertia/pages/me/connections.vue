@@ -1,20 +1,8 @@
 <script setup lang="ts">
 import { AuthProviderPresenter } from '#auth/presenters/auth_provider_presenter'
 import { type AuthProviderNames, AuthProviderNamesArray } from '#types/common'
-import { Head } from '@inertiajs/vue3'
 import { CableIcon } from 'lucide-vue-next'
-import { type Component, computed, onMounted, PropType } from 'vue'
 import GoogleIcon from '~/assets/images/google_icon.vue'
-import { Button } from '~/components/shared/ui/button'
-import { Card } from '~/components/shared/ui/card'
-import { Separator } from '~/components/shared/ui/separator'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '~/components/shared/ui/tooltip'
-import { useProfileBreadcrumb } from '~/composables/use_breadcrumb'
 import MeLayout from '~/layouts/me.layout.vue'
 
 const props = defineProps({

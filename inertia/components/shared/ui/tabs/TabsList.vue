@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type HTMLAttributes, computed } from 'vue'
 import { TabsList, type TabsListProps } from 'radix-vue'
-import { cn } from '~/utils'
+import { cn } from '~/utils/shadcn.helper'
 
 const props = defineProps<TabsListProps & { class?: HTMLAttributes['class'] }>()
 

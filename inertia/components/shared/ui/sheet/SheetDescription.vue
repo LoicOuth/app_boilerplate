@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type HTMLAttributes, computed } from 'vue'
 import { DialogDescription, type DialogDescriptionProps } from 'radix-vue'
-import { cn } from '~/utils'
+import { cn } from '~/utils/shadcn.helper'
 
 const props = defineProps<DialogDescriptionProps & { class?: HTMLAttributes['class'] }>()
 

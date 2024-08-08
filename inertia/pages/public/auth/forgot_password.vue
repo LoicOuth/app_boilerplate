@@ -1,17 +1,5 @@
 <script setup lang="ts">
-import { useForm, Link, usePage } from '@inertiajs/vue3'
 import { ArrowLeftIcon, CheckCircleIcon } from 'lucide-vue-next'
-import { computed } from 'vue'
-import { Button } from '~/components/shared/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '~/components/shared/ui/card'
-import { Input } from '~/components/shared/ui/input'
-import { Label } from '~/components/shared/ui/label'
 
 const errors = computed(() => usePage().props.errors)
 const success = computed(() => usePage().props.success as string | undefined)

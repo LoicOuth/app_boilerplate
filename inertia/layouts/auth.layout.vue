@@ -1,15 +1,4 @@
 <script setup lang="ts">
-import { router, usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '~/components/shared/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/shared/ui/tabs'
-
 const currentTab = computed({
   set: (value: string | number) => {
     router.visit(value.toString())

@@ -7,7 +7,7 @@ import {
   TooltipPortal,
   useForwardPropsEmits,
 } from 'radix-vue'
-import { cn } from '~/utils'
+import { cn } from '~/utils/shadcn.helper'
 
 defineOptions({
   inheritAttrs: false,

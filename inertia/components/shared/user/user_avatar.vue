@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { UserPresenter } from '#me/presenters/user_presenter'
-import { computed, PropType } from 'vue'
-import { Avatar, AvatarFallback, AvatarImage, AvatarVariants } from '~/components/shared/ui/avatar'
+import { AvatarVariants } from '~/components/shared/ui/avatar'
 
 const props = defineProps({
   user: { type: Object as PropType<UserPresenter | undefined>, required: true },

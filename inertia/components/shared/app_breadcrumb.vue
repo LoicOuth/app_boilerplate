@@ -1,15 +1,4 @@
 <script setup lang="ts">
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '~/components/shared/ui/breadcrumb'
-import { Link } from '@inertiajs/vue3'
-import { useProfileBreadcrumb } from '~/composables/use_breadcrumb'
-
 const { breadcrumbProfileItems } = useProfileBreadcrumb()
 </script>
 

@@ -6,7 +6,7 @@ import {
   useForwardProps,
 } from 'radix-vue'
 import { ChevronRight } from 'lucide-vue-next'
-import { cn } from '~/utils'
+import { cn } from '~/utils/shadcn.helper'
 
 const props = defineProps<DropdownMenuSubTriggerProps & { class?: HTMLAttributes['class'] }>()
 

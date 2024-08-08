@@ -1,21 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { MenuIcon, LogInIcon } from 'lucide-vue-next'
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '~/components/shared/ui/sheet'
-import { Button } from '~/components/shared/ui/button'
 import NavLink from '~/components/shared/nav_link.vue'
-import { Link } from '@inertiajs/vue3'
-import { useScreenMediaQuery } from '~/composables/use_screen_media_query'
-import { useUser } from '~/composables/use_user'
-import Notification from '~/components/shared/notification.vue'
-import UserMenu from '~/components/shared/menu/user_menu.vue'
 import Toast from '~/components/shared/toast.vue'
+import Notification from '~/components/shared/notification.vue'
+import User_menu from '~/components/shared/menu/user_menu.vue'
 
 const { mdAndDown, mdAndUp } = useScreenMediaQuery()
 const { user } = useUser()
@@ -47,7 +35,7 @@ const isOpen = ref(false)
 
         <div class="flex flex-1 items-center space-x-2 justify-end">
           <Notification v-if="user" />
-          <UserMenu v-if="user" />
+          <User_menu v-if="user" />
           <Button v-else variant="ghost" as-child>
             <Link as="a" href="/login">
               <LogInIcon :size="20" class="mr-2" />

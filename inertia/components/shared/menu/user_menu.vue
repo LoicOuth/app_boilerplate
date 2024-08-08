@@ -1,28 +1,7 @@
 <script setup lang="ts">
-import { Link, router } from '@inertiajs/vue3'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '~/components/shared/ui/dropdown-menu'
 import { LayoutDashboardIcon, LogOutIcon, UserRoundCogIcon } from 'lucide-vue-next'
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '~/components/shared/ui/alert-dialog'
-import { Button } from '~/components/shared/ui/button'
-import { ref } from 'vue'
 import Theme from '~/components/shared/menu/theme.vue'
 import UserAvatar from '~/components/shared/user/user_avatar.vue'
-import { useUser } from '~/composables/use_user'
 
 const { user } = useUser()
 

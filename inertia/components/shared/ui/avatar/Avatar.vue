@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { AvatarRoot } from 'radix-vue'
 import { type AvatarVariants, avatarVariant } from '.'
-import { cn } from '~/utils'
+import { cn } from '~/utils/shadcn.helper'
 
 const props = withDefaults(
   defineProps<{

@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
 import { type ButtonVariants, buttonVariants } from '.'
-import { cn } from '~/utils'
+import { cn } from '~/utils/shadcn.helper'
 import { LoaderCircleIcon } from 'lucide-vue-next'
 
 interface Props extends PrimitiveProps {

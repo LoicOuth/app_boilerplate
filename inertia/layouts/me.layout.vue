@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { Button } from '~/components/shared/ui/button'
 import { MonitorUpIcon, ShieldIcon, UserCogIcon } from 'lucide-vue-next'
-import { Link, usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
-import { Separator } from '~/components/shared/ui/separator'
-import { useScreenMediaQuery } from '~/composables/use_screen_media_query'
-import Breadcrumb from '~/components/shared/breadcrumb.vue'
+import AppBreadcrumb from '~/components/shared/app_breadcrumb.vue'
 
 const { mdAndDown } = useScreenMediaQuery()
 
@@ -13,7 +8,7 @@ const currentUrl = computed(() => usePage().url)
 </script>
 
 <template>
-  <Breadcrumb />
+  <AppBreadcrumb />
 
   <div class="mt-10 pb-16">
     <div class="space-y-0.5">

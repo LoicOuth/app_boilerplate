@@ -1,14 +1,5 @@
 <script setup lang="ts">
 import { ThemCoookieKey, Theme } from '#types/theme'
-import { onMounted, ref } from 'vue'
-import {
-  DropdownMenuPortal,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-} from '~/components/shared/ui/dropdown-menu'
 import { SunMoonIcon } from 'lucide-vue-next'
 
 const theme = ref<Theme>()

@@ -1,18 +1,5 @@
 <script setup lang="ts">
-import { useForm, Link, usePage } from '@inertiajs/vue3'
 import { ArrowLeftIcon } from 'lucide-vue-next'
-import { computed } from 'vue'
-import { Alert, AlertDescription } from '~/components/shared/ui/alert'
-import { Button } from '~/components/shared/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '~/components/shared/ui/card'
-import { Input } from '~/components/shared/ui/input'
-import { Label } from '~/components/shared/ui/label'
 
 const errors = computed(() => usePage().props.errors)
 
@@ -39,7 +26,7 @@ const formData = useForm({
         <CardTitle>Créer un nouveau mot de passe</CardTitle>
         <CardDescription>
           Votre nouveau mot de passe doit être différent du mot de passe utilisé précédemment.
-          <Alert v-if="errors" variant="destructive">
+          <Alert v-if="errors" variant="destructive" class="mt-5">
             <AlertDescription>
               {{ errors }}
             </AlertDescription>
