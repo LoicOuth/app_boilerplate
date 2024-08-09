@@ -1,3 +1,5 @@
+import { Exception } from '@adonisjs/core/exceptions'
+
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DLETE'
 
 export default class HttpService {
@@ -33,10 +35,16 @@ export default class HttpService {
         return response.json() as Promise<T>
       }
 
-      throw Error('error')
+      const error = await response.text()
+
+      throw new Exception(`An error during fetch ${url} occure`, {
+        status: response.status,
+        cause: error,
+      })
     } catch (error) {
-      console.error(error)
-      throw Error(error)
+      throw new Exception(`An error during fetch ${url} occure`, {
+        cause: error,
+      })
     }
   }
 }

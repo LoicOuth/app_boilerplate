@@ -1,6 +1,7 @@
 import { UserPresenter } from '#me/presenters/user_presenter'
 import { ThemCoookieKey, Theme } from '#types/theme'
 import { defineConfig } from '@adonisjs/inertia'
+import { ToastErrorKey, ToastSucessKey } from '#core/types/toast_types'
 import '@adonisjs/inertia/types'
 
 const inertiaConfig = defineConfig({
@@ -16,8 +17,8 @@ const inertiaConfig = defineConfig({
     errors: ({ session }) => session?.flashMessages.get('errors'),
     success: ({ session }) => session?.flashMessages.get('success'),
     authError: ({ session }) => !!session?.flashMessages.get('errorsBag.E_INVALID_CREDENTIALS'),
-    toastError: ({ session }) => session.flashMessages.get('toast_error')?.message,
-    toastSuccess: ({ session }) => session.flashMessages.get('toast_success')?.message,
+    toastError: ({ session }) => session.flashMessages.get(ToastErrorKey)?.message,
+    toastSuccess: ({ session }) => session.flashMessages.get(ToastSucessKey)?.message,
     user: async ({ auth }) => {
       await auth.check()
       return await auth.user?.projection()
