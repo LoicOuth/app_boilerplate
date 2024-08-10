@@ -6,6 +6,7 @@ export class UserPresenter {
   declare email: string
   declare avatar: string
   declare createdAt: string
+  declare validatedAt?: string
   declare isConnectedWithProvider: boolean
 
   constructor(user: User) {
@@ -14,6 +15,7 @@ export class UserPresenter {
     this.email = user.email
     this.avatar = user.avatar?.includes('https') ? user.avatar : `/${user.avatar}`
     this.createdAt = user.createdAt.toString()
+    this.validatedAt = user.validatedAt?.toString()
   }
 
   static async build(user: User): Promise<UserPresenter> {

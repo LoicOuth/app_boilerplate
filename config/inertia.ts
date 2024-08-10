@@ -1,5 +1,4 @@
 import { UserPresenter } from '#me/presenters/user_presenter'
-import { ThemCoookieKey, Theme } from '#types/theme'
 import { defineConfig } from '@adonisjs/inertia'
 import { ToastErrorKey, ToastSucessKey } from '#core/types/toast_types'
 import '@adonisjs/inertia/types'
@@ -23,10 +22,6 @@ const inertiaConfig = defineConfig({
       await auth.check()
       return await auth.user?.projection()
     },
-    theme: ({ request }) =>
-      request.plainCookie(ThemCoookieKey, {
-        encoded: false,
-      }) ?? Theme.Dark,
   },
 
   /**
@@ -44,7 +39,6 @@ export default inertiaConfig
 declare module '@adonisjs/inertia/types' {
   export interface SharedProps extends Record<string, any> {
     user?: UserPresenter
-    theme: Theme
     authError?: boolean
     toastError?: string
     toastSuccess?: string

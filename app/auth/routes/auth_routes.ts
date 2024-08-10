@@ -7,6 +7,7 @@ const LogoutController = () => import('#auth/controllers/logout_controller')
 const RegisterController = () => import('#auth/controllers/register_controller')
 const ForgotPasswordController = () => import('#auth/controllers/forgot_password_controller')
 const ResetPasswordController = () => import('#auth/controllers/reset_password_controller')
+const ValidateAccountController = () => import('#auth/controllers/validate_account_controller')
 
 router
   .group(() => {
@@ -32,6 +33,10 @@ router
       .get('/password/reset/:id', [ResetPasswordController, 'render'])
       .as('reset-password.index')
     router.post('/password/reset', [ResetPasswordController, 'handle']).as('reset-password.handle')
+
+    router
+      .get('/account/:id/validate', [ValidateAccountController, 'handle'])
+      .as('validate-account.index')
   })
   .middleware([middleware.guest()])
 

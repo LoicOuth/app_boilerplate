@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import GoogleIcon from '~/assets/images/google_icon.vue'
+import { CheckCircleIcon } from 'lucide-vue-next'
+
+const success = computed(() => usePage().props.success as string | undefined)
 
 const formData = useForm({
   name: '',
@@ -12,7 +15,12 @@ const formData = useForm({
 <template>
   <Head title="S'enregistrer" />
 
-  <div class="flex flex-col gap-5">
+  <div v-if="success" class="flex flex-col items-center justify-center gap-5">
+    <CheckCircleIcon class="text-green-500" :size="120" />
+    <div class="text-lg">{{ success }}</div>
+  </div>
+
+  <div v-else class="flex flex-col gap-5">
     <Button variant="outline" @click="router.get('/google/redirect')">
       <GoogleIcon class="mr-3" />
       S'enregistrer avec google

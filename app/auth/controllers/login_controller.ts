@@ -11,10 +11,15 @@ export default class LoginController {
     return inertia.render('public/auth/login')
   }
 
-  async handle({ response, request, auth }: HttpContext) {
+  async handle({ response, request, auth, session }: HttpContext) {
     const { email, password } = await request.validateUsing(LoginController.validator)
 
     const user = await User.verifyCredentials(email, password)
+
+    if (!user.validatedAt) {
+      session.flash({ errors: 'Vous devez valider votre compte avant de vous connectez' })
+      return response.redirect().toRoute('login.index')
+    }
 
     await auth.use('web').login(user)
 

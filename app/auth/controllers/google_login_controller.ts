@@ -1,9 +1,9 @@
 import AuthProvider from '#auth/models/auth_provider'
 import User from '#auth/models/user'
 import LoopService from '#core/services/loop_service'
-import { ToastService } from '#core/services/toast_service'
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
+import { DateTime } from 'luxon'
 
 export default class GoogleLoginController {
   async redirect({ ally, inertia }: HttpContext) {
@@ -12,24 +12,21 @@ export default class GoogleLoginController {
   }
 
   @inject()
-  async handle({ ally, auth, response }: HttpContext, toast: ToastService, loop: LoopService) {
+  async handle({ ally, auth, response, session }: HttpContext, loop: LoopService) {
     const google = ally.use('google')
 
     if (google.accessDenied()) {
-      toast.error('Access denied')
-
+      session.flash({ errors: 'Access denied' })
       return response.redirect().toRoute('login.index')
     }
 
     if (google.stateMisMatch()) {
-      toast.error('Request expired. Retry again')
-
+      session.flash({ errors: 'Request expired. Retry again' })
       return response.redirect().toRoute('login.index')
     }
 
     if (google.hasError()) {
-      toast.error(google.getError()!)
-
+      session.flash({ errors: google.getError()! })
       return response.redirect().toRoute('login.index')
     }
 
@@ -54,7 +51,7 @@ export default class GoogleLoginController {
     if (user) {
       await user.merge(userData).save()
     } else {
-      user = await User.create(userData)
+      user = await User.create({ ...userData, validatedAt: DateTime.now() })
       await AuthProvider.create({ providerId: googleUser.id, userId: user.id })
       const splittedName = user.name.split(' ')
       await loop.createContact({

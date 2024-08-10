@@ -8,7 +8,7 @@ const formData = useForm({
 })
 
 const authError = computed(() => usePage<{ authError?: boolean }>().props.authError)
-const toastError = computed(() => usePage<{ toastError?: string }>().props.toastError)
+const errors = computed(() => usePage().props.errors)
 </script>
 
 <template>
@@ -21,13 +21,12 @@ const toastError = computed(() => usePage<{ toastError?: string }>().props.toast
       </AlertTitle>
       <AlertDescription>Vérifier vos identifiants</AlertDescription>
     </Alert>
-
-    <Alert v-if="!!toastError" variant="destructive">
+    <Alert v-if="!!errors" variant="destructive">
       <AlertTitle class="flex items-center">
         <TriangleAlertIcon class="mr-2" />
         Erreur de connexion
       </AlertTitle>
-      <AlertDescription>{{ toastError }}</AlertDescription>
+      <AlertDescription>{{ errors }}</AlertDescription>
     </Alert>
 
     <Button variant="outline" @click="router.get('/google/redirect')">

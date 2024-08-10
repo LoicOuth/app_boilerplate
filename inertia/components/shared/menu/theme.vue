@@ -5,13 +5,15 @@ import { SunMoonIcon } from 'lucide-vue-next'
 const theme = ref<Theme>()
 
 const toggleTheme = () => {
+  const expiryDate = new Date(new Date().getDate() + 365)
+
   if (theme.value === Theme.Light && !document.documentElement.classList.contains('dark')) {
     document.documentElement.classList.add('dark')
-    document.cookie = `${ThemCoookieKey}=${Theme.Dark}; SameSite=lax;`
+    document.cookie = `${ThemCoookieKey}=${Theme.Dark}; SameSite=lax; expires=${expiryDate.toUTCString()}; Path=/;`
     theme.value = Theme.Dark
   } else if (theme.value === Theme.Dark && document.documentElement.classList.contains('dark')) {
     document.documentElement.classList.remove('dark')
-    document.cookie = `${ThemCoookieKey}=${Theme.Light}; SameSite=lax;`
+    document.cookie = `${ThemCoookieKey}=${Theme.Light}; expires=${expiryDate.toUTCString()}; Path=/;`
     theme.value = Theme.Light
   }
 }

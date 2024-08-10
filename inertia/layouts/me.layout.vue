@@ -3,6 +3,7 @@ import { MonitorUpIcon, ShieldIcon, UserCogIcon } from 'lucide-vue-next'
 import AppBreadcrumb from '~/components/shared/app_breadcrumb.vue'
 
 const { mdAndDown } = useScreenMediaQuery()
+const { user } = useUser()
 
 const currentUrl = computed(() => usePage().url)
 </script>
@@ -16,6 +17,10 @@ const currentUrl = computed(() => usePage().url)
       <p class="text-muted-foreground">
         Gérer les paramètres de votre compte et définir vos préférences en matière de courrier
         électronique.
+      </p>
+      <p class="text-muted-foreground">
+        Votre compte a été validé le :
+        <strong>{{ new Date(user.validatedAt).toLocaleString() }}</strong>
       </p>
     </div>
     <Separator class="my-6" />
