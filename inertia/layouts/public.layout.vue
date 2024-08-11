@@ -5,6 +5,7 @@ import Toast from '~/components/shared/toast.vue'
 import Notification from '~/components/shared/notification.vue'
 import User_menu from '~/components/shared/menu/user_menu.vue'
 
+const { t } = useI18n()
 const { mdAndDown, mdAndUp } = useScreenMediaQuery()
 const { user } = useUser()
 
@@ -29,7 +30,7 @@ const isOpen = ref(false)
         </Sheet>
 
         <template v-else-if="mdAndUp">
-          <NavLink to="/" text="Accueil" />
+          <NavLink to="/" :text="t('publicLayout.home')" />
           <NavLink to="/about" text="A propos" />
         </template>
 
@@ -39,7 +40,7 @@ const isOpen = ref(false)
           <Button v-else variant="ghost" as-child>
             <Link as="a" href="/login">
               <LogInIcon :size="20" class="mr-2" />
-              <span>Se connecter</span>
+              <span>{{ t('publicLayout.signIn') }}</span>
             </Link>
           </Button>
         </div>

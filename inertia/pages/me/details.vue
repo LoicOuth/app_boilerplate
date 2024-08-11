@@ -3,6 +3,7 @@ import { PenIcon } from 'lucide-vue-next'
 import UserAvatar from '~/components/shared/user/user_avatar.vue'
 import MeLayout from '~/layouts/me.layout.vue'
 
+const { t } = useI18n()
 const { setBreadCrumb } = useProfileBreadcrumb()
 const { user } = useUser()
 
@@ -16,18 +17,18 @@ const formData = useForm({
 const avatarFileInputSrc = computed(() => formData.avatar && URL.createObjectURL(formData.avatar))
 
 onMounted(() => {
-  setBreadCrumb([{ href: '/me/details', label: 'Mes informations' }])
+  setBreadCrumb([{ href: '/me/details', label: t('profileDetails.title') }])
 })
 </script>
 
 <template>
-  <Head title="Mes informations" />
+  <Head :title="t('profileDetails.head')" />
 
   <MeLayout>
     <div>
-      <h3 class="text-lg font-medium">Mes informations</h3>
+      <h3 class="text-lg font-medium">{{ t('profileDetails.title') }}</h3>
       <p class="text-sm text-muted-foreground">
-        Vous pouvez modifier vos informations ci-dessous (Nom, Adresse email, avatar)
+        {{ t('profileDetails.description') }}
       </p>
     </div>
     <Separator />
@@ -52,7 +53,7 @@ onMounted(() => {
     />
 
     <div class="flex flex-col gap-2">
-      <Label for="name">Nom</Label>
+      <Label for="name">{{ t('profileDetails.name') }}</Label>
       <Input
         v-model="formData.name"
         id="name"
@@ -65,7 +66,7 @@ onMounted(() => {
       </span>
     </div>
     <div class="flex flex-col gap-2">
-      <Label for="email">Addresse email</Label>
+      <Label for="email">{{ t('profileDetails.email') }}</Label>
       <Input
         v-model="formData.email"
         id="email"
@@ -88,13 +89,12 @@ onMounted(() => {
             :disabled="user?.isConnectedWithProvider"
             @click="formData.post('/me/details')"
           >
-            Mettre à jour
+            {{ t('profileDetails.update') }}
           </Button>
         </TooltipTrigger>
         <TooltipContent>
           <p>
-            Vous ne pouvez pas modifier vos informations car vous êtes connecter avec un service
-            tiers
+            {{ t('profileDetails.cantEdits') }}
           </p>
         </TooltipContent>
       </Tooltip>

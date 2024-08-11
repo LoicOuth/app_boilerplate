@@ -5,7 +5,7 @@ import { DateTime } from 'luxon'
 export default class ValidateAccountController {
   async handle({ request, session, response, auth }: HttpContext) {
     if (!request.hasValidSignature()) {
-      session.flash({ errors: 'La session a expiré veuillez réssayé' })
+      session.flash({ errors: 'resetPassword.sessionExpiredError' })
       return response.redirect().toRoute('register.index')
     }
 

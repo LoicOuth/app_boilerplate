@@ -2,6 +2,8 @@
 import { TriangleAlertIcon } from 'lucide-vue-next'
 import GoogleIcon from '~/assets/images/google_icon.vue'
 
+const { t } = useI18n()
+
 const formData = useForm({
   email: '',
   password: '',
@@ -12,32 +14,32 @@ const errors = computed(() => usePage().props.errors)
 </script>
 
 <template>
-  <Head title="Se connecter" />
+  <Head :title="t('login.head')" />
   <div class="flex flex-col gap-5">
     <Alert v-if="!!authError" variant="destructive">
       <AlertTitle class="flex items-center">
         <TriangleAlertIcon class="mr-2" />
-        Erreur de connexion
+        {{ t('login.connectionErrorTitle') }}
       </AlertTitle>
-      <AlertDescription>Vérifier vos identifiants</AlertDescription>
+      <AlertDescription>{{ t('login.connectionErrorDescription') }}</AlertDescription>
     </Alert>
     <Alert v-if="!!errors" variant="destructive">
       <AlertTitle class="flex items-center">
         <TriangleAlertIcon class="mr-2" />
-        Erreur de connexion
+        {{ t('login.connectionErrorTitle') }}
       </AlertTitle>
-      <AlertDescription>{{ errors }}</AlertDescription>
+      <AlertDescription>{{ t(errors) }}</AlertDescription>
     </Alert>
 
     <Button variant="outline" @click="router.get('/google/redirect')">
       <GoogleIcon class="mr-3" />
-      Se connecter avec google
+      {{ t('login.connectionWithGoogle') }}
     </Button>
 
     <Separator />
 
     <div class="flex flex-col gap-2">
-      <Label for="email">Addresse email</Label>
+      <Label for="email">{{ t('login.email') }}</Label>
       <Input
         v-model="formData.email"
         id="email"
@@ -51,9 +53,9 @@ const errors = computed(() => usePage().props.errors)
     </div>
     <div class="flex flex-col gap-2">
       <div class="flex items-center">
-        <Label for="password">Mot de passe</Label>
+        <Label for="password">{{ t('login.password') }}</Label>
         <Link as="a" href="/password/forgot" class="ml-auto inline-block text-sm underline">
-          Mot de passe oublié ?
+          {{ t('login.forgotPassword') }}
         </Link>
       </div>
       <Input v-model="formData.password" id="password" type="password" required />
@@ -67,11 +69,11 @@ const errors = computed(() => usePage().props.errors)
       :loading="formData.processing"
       @click="formData.post('login')"
     >
-      Se connecter
+      {{ t('login.signIn') }}
     </Button>
     <div class="mt-2 text-center text-sm">
-      Vous n'avez pas encore de compte ?
-      <Link href="/register" class="underline"> s'enregistrer </Link>
+      {{ t('login.noAccount') }}
+      <Link href="/register" class="underline"> {{ t('login.register') }} </Link>
     </div>
   </div>
 </template>

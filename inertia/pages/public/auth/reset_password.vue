@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ArrowLeftIcon } from 'lucide-vue-next'
 
+const { t } = useI18n()
+
 const errors = computed(() => usePage().props.errors)
 
 const props = defineProps({
@@ -15,6 +17,7 @@ const formData = useForm({
 </script>
 
 <template>
+  <Head :title="t('resetPassword.head')" />
   <div class="flex min-h-screen justify-center items-center bg-background">
     <Card class="w-[500px]">
       <CardHeader>
@@ -23,12 +26,12 @@ const formData = useForm({
             <ArrowLeftIcon />
           </Link>
         </Button>
-        <CardTitle>Créer un nouveau mot de passe</CardTitle>
+        <CardTitle>{{ t('resetPassword.title') }}</CardTitle>
         <CardDescription>
-          Votre nouveau mot de passe doit être différent du mot de passe utilisé précédemment.
+          {{ t('resetPassword.description') }}
           <Alert v-if="errors" variant="destructive" class="mt-5">
             <AlertDescription>
-              {{ errors }}
+              {{ t(errors) }}
             </AlertDescription>
           </Alert>
         </CardDescription>
@@ -36,14 +39,14 @@ const formData = useForm({
       <CardContent>
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-2">
-            <Label for="password">Mot de passe</Label>
+            <Label for="password">{{ t('resetPassword.password') }}</Label>
             <Input v-model="formData.password" id="password" type="password" required />
             <span v-if="formData.errors.password" class="text-red-500 text-xs">
               {{ formData.errors.password[0] }}
             </span>
           </div>
           <div class="flex flex-col gap-2">
-            <Label for="password_confirmation">Confimer le mot de passe</Label>
+            <Label for="password_confirmation">{{ t('resetPassword.confirmedPassword') }}</Label>
             <Input
               v-model="formData.password_confirmation"
               id="password_confirmation"
@@ -59,7 +62,7 @@ const formData = useForm({
             :disabled="errors"
             @click="formData.post('/password/reset')"
           >
-            Rénitialiser le mot de passe
+            {{ t('resetPassword.resetPassword') }}
           </Button>
         </div>
       </CardContent>

@@ -9,6 +9,7 @@ import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import PublicLayout from '~/layouts/public.layout.vue'
 import AuthLayout from '~/layouts/auth.layout.vue'
 import AppLayout from '~/layouts/app.layout.vue'
+import i18n from '~/plugins/i18n'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 
@@ -43,6 +44,7 @@ createInertiaApp({
     // createSSRApp({ render: () => h(App, props) })
     createApp({ render: () => h(App, props) })
       .use(plugin)
+      .use(i18n)
       .mount(el)
   },
 })

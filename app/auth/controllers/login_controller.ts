@@ -17,7 +17,7 @@ export default class LoginController {
     const user = await User.verifyCredentials(email, password)
 
     if (!user.validatedAt) {
-      session.flash({ errors: 'Vous devez valider votre compte avant de vous connectez' })
+      session.flash({ errors: 'login.validateError' })
       return response.redirect().toRoute('login.index')
     }
 

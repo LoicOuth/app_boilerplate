@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const { t } = useI18n()
+</script>
+
 <template>
-  <Head title="Accueil" />
+  <Head :title="t('home')" />
 
   <h1 class="text-center text-5xl font-semibold mt-12 leading-relaxed">
     Bienvenue <span class="text-primary font-bold">l'application</span> qui permet de faire quelque

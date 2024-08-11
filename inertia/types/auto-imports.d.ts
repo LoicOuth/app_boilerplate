@@ -124,6 +124,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useForm: typeof import('@inertiajs/vue3')['useForm']
+  const useI18n: typeof import('vue-i18n')['useI18n']
   const usePage: typeof import('@inertiajs/vue3')['usePage']
   const useProfileBreadcrumb: typeof import('../composables/use_breadcrumb')['useProfileBreadcrumb']
   const useScreenMediaQuery: typeof import('../composables/use_screen_media_query')['useScreenMediaQuery']
@@ -194,6 +195,7 @@ declare module 'vue' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useForm: UnwrapRef<typeof import('@inertiajs/vue3')['useForm']>
+    readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly usePage: UnwrapRef<typeof import('@inertiajs/vue3')['usePage']>
     readonly useProfileBreadcrumb: UnwrapRef<typeof import('../composables/use_breadcrumb')['useProfileBreadcrumb']>
     readonly useScreenMediaQuery: UnwrapRef<typeof import('../composables/use_screen_media_query')['useScreenMediaQuery']>

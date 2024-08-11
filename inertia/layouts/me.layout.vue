@@ -2,6 +2,7 @@
 import { MonitorUpIcon, ShieldIcon, UserCogIcon } from 'lucide-vue-next'
 import AppBreadcrumb from '~/components/shared/app_breadcrumb.vue'
 
+const { t } = useI18n()
 const { mdAndDown } = useScreenMediaQuery()
 const { user } = useUser()
 
@@ -15,11 +16,10 @@ const currentUrl = computed(() => usePage().url)
     <div class="space-y-0.5">
       <h2 class="text-2xl font-bold tracking-tight">Paramétrage du compte</h2>
       <p class="text-muted-foreground">
-        Gérer les paramètres de votre compte et définir vos préférences en matière de courrier
-        électronique.
+        {{ t('meLayout.description') }}
       </p>
       <p class="text-muted-foreground">
-        Votre compte a été validé le :
+        {{ t('meLayout.validateAccount') }}
         <strong>{{ new Date(user.validatedAt).toLocaleString() }}</strong>
       </p>
     </div>
@@ -35,7 +35,7 @@ const currentUrl = computed(() => usePage().url)
           >
             <Link as="a" href="/me/details" class="cursor-pointer">
               <UserCogIcon :size="20" class="mr-2" />
-              <span>Mes informations</span>
+              <span>{{ t('meLayout.details') }}</span>
             </Link>
           </Button>
           <Button
@@ -46,7 +46,7 @@ const currentUrl = computed(() => usePage().url)
           >
             <Link as="a" href="/me/security" class="cursor-pointer">
               <ShieldIcon :size="20" class="mr-2" />
-              <span>Sécurité</span>
+              <span>{{ t('meLayout.security') }}</span>
             </Link>
           </Button>
           <Button
@@ -57,7 +57,7 @@ const currentUrl = computed(() => usePage().url)
           >
             <Link as="a" href="/me/connections" class="cursor-pointer">
               <MonitorUpIcon :size="20" class="mr-2" />
-              <span>Connexions</span>
+              <span>{{ t('meLayout.connection') }}</span>
             </Link>
           </Button>
         </nav>

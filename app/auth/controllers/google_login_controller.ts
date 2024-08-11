@@ -16,12 +16,12 @@ export default class GoogleLoginController {
     const google = ally.use('google')
 
     if (google.accessDenied()) {
-      session.flash({ errors: 'Access denied' })
+      session.flash({ errors: 'login.googleAccessDenied' })
       return response.redirect().toRoute('login.index')
     }
 
     if (google.stateMisMatch()) {
-      session.flash({ errors: 'Request expired. Retry again' })
+      session.flash({ errors: 'login.googleRequestExpired' })
       return response.redirect().toRoute('login.index')
     }
 

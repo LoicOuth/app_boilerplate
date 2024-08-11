@@ -12,7 +12,7 @@ export default class ResetPasswordController {
 
   render({ inertia, request, session }: HttpContext) {
     if (!request.hasValidSignature()) {
-      session.flash({ errors: 'La session a expiré veuillez réssayé' })
+      session.flash({ errors: 'resetPassword.sessionExpiredError' })
     }
 
     return inertia.render('public/auth/reset_password', {

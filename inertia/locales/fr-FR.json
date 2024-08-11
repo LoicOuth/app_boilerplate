@@ -1,0 +1,112 @@
+{
+  "home": "Accueil",
+  "forgotPassword": {
+    "head": "Rénitiliser votre mot de passe",
+    "title": "Rénitiliser votre mot de passe",
+    "description": "Saisissez l'adresse électronique associée à votre compte et nous vous enverrons par courrier électronique les instructions pour réinitialiser votre mot de passe.",
+    "email": "Adresse email",
+    "send": "Envoyer les instructions",
+    "sucessMessage": "L'Email avec les informations a bien été envoyé !",
+    "errorAuthProvider": "Se compte est connecté avec un service externe"
+  },
+  "login": {
+    "head": "Se connecter",
+    "connectionErrorTitle": "Erreur de connexion",
+    "connectionErrorDescription": "Vérifier vos identifiants",
+    "connectionWithGoogle": "Se connecter avec google",
+    "email": "Adresse email",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "signIn": "Se connecter",
+    "noAccount": "Vous n'avez pas encore de compte ?",
+    "register": "S'enregistrer",
+    "validateError": "Vous devez valider votre compte avant de vous connectez",
+    "googleAccessDenied": "Accès refusé",
+    "googleRequestExpired": "La demande a expiré. Réessayer"
+  },
+  "register": {
+    "head": "S'enregistrer",
+    "googleRegister": "S'enregistrer avec google",
+    "name": "Nom",
+    "email": "Adresse email",
+    "password": "Mot de passe",
+    "confirmedPassword": "Confimer le mot de passe",
+    "create": "Créer mon compte",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signIn": "Se connecter",
+    "emailSent": "Un e-mail de validation de votre compte a été envoyé."
+  },
+  "resetPassword": {
+    "head": "Créer un nouveau mot de passe",
+    "title": "Créer un nouveau mot de passe",
+    "description": "Votre nouveau mot de passe doit être différent du mot de passe utilisé précédemment.",
+    "password": "Mot de passe",
+    "confirmedPassword": "Confimer le mot de passe",
+    "resetPassword": "Rénitialiser le mot de passe",
+    "sessionExpiredError": "La session a expiré veuillez réssayé"
+  },
+  "profileConnections": {
+    "head": "Connexions",
+    "title": "Connexions",
+    "description": "Ici vous trouverez les connexions avec des services tierces",
+    "dissociate": "Dissocier",
+    "cantDissociate": "Vous ne pouvez pas dissocier ce service car vous êtes connectés avec",
+    "noExternalConection": "Aucune connexion avec un service tierce",
+    "connected": "Se connecter à un service tierce :"
+  },
+  "profileDetails": {
+    "head": "Mes informations",
+    "title": "Mes informations",
+    "description": "Vous pouvez modifier vos informations ci-dessous (Nom, Adresse email, avatar)",
+    "name": "Nom",
+    "email": "Adresse email",
+    "update": "Mettre à jour",
+    "cantEdit": " Vous ne pouvez pas modifier vos informations car vous êtes connecter avec un service tiers"
+  },
+  "profileSecurity": {
+    "head": "Sécurité",
+    "title": "Sécurité",
+    "description": "Vous pouvez modifier votre mot de passe ici",
+    "password": "Mot de passe",
+    "confirmedPassword": "Confimer le mot de passe",
+    "update": "Mettre à jour",
+    "cantEdit": " Vous ne pouvez pas modifier vos informations car vous êtes connecter avec un service tiers"
+  },
+  "authLayout": {
+    "signIn": "Se connecter",
+    "register": "S'enregistrer",
+    "signInDescription": " Connectez vous avec votre compte google ou votre email",
+    "registerDescription": "Entrer vos informations pour vous inscrire à la plateforme"
+  },
+  "meLayout": {
+    "description": "Gérer les paramètres de votre compte et définir vos préférences en matière de courrier électronique.",
+    "validateAccount": "Votre compte a été validé le :",
+    "details": "Mes informations",
+    "security": "Sécurité",
+    "connection": "Connexions"
+  },
+  "publicLayout": {
+    "home": "Accueil",
+    "signIn": "Se connecter"
+  },
+  "notifications": {
+    "markAsRead": "Marquer comme lu",
+    "delete": "Supprimer",
+    "noNotifications": "Aucune notifications"
+  },
+  "userMenu": {
+    "dashboard": "Tableau de bord",
+    "myAccount": "Mon compte",
+    "logout": "Se déconnecter",
+    "logoutTitle": "Voulez-vous vraiment vous déconnectez ?",
+    "logoutDescription": " Une fois déconnecter vous n'aurez plus accès a l'application",
+    "cancel": "Annuler",
+    "theme": "Thème",
+    "dark": "Sombre",
+    "light": "Clair"
+  },
+  "defaultBreadcrumb": {
+    "home": "Accueil",
+    "details": "Paramétrage du compte"
+  }
+}

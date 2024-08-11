@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ArrowLeftIcon, CheckCircleIcon } from 'lucide-vue-next'
 
+const { t } = useI18n()
+
 const errors = computed(() => usePage().props.errors)
 const success = computed(() => usePage().props.success as string | undefined)
 
@@ -10,6 +12,8 @@ const formData = useForm({
 </script>
 
 <template>
+  <Head :title="t('forgotPassword.head')" />
+
   <div class="flex min-h-screen justify-center items-center bg-background">
     <Card class="w-[500px]">
       <CardHeader>
@@ -18,16 +22,15 @@ const formData = useForm({
             <ArrowLeftIcon />
           </Link>
         </Button>
-        <CardTitle>Réinitialiser le mot de passe</CardTitle>
+        <CardTitle>{{ t('forgotPassword.title') }}</CardTitle>
         <CardDescription>
-          Saisissez l'adresse électronique associée à votre compte et nous vous enverrons par
-          courrier électronique les instructions pour réinitialiser votre mot de passe.
+          {{ t('forgotPassword.description') }}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div v-if="!success" class="flex flex-col gap-5">
           <div class="flex flex-col gap-2">
-            <Label for="email">Addresse email</Label>
+            <Label for="email">{{ t('forgotPassword.email') }}</Label>
             <Input
               v-model="formData.email"
               id="email"
@@ -46,12 +49,12 @@ const formData = useForm({
             :loading="formData.processing"
             @click="formData.post('/password/forgot')"
           >
-            Envoyer les instructions
+            {{ t('forgotPassword.send') }}
           </Button>
         </div>
         <div v-else class="flex flex-col items-center justify-center gap-5">
           <CheckCircleIcon class="text-green-500" :size="120" />
-          <div class="text-lg">L'Email avec les informations a bien été envoyé !</div>
+          <div class="text-lg">{{ t(success) }}</div>
         </div>
       </CardContent>
     </Card>

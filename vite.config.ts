@@ -21,6 +21,7 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue',
+        'vue-i18n',
         {
           '@inertiajs/vue3': ['usePage', 'router', 'useForm'],
         },

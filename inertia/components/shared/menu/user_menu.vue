@@ -3,6 +3,7 @@ import { LayoutDashboardIcon, LogOutIcon, UserRoundCogIcon } from 'lucide-vue-ne
 import Theme from '~/components/shared/menu/theme.vue'
 import UserAvatar from '~/components/shared/user/user_avatar.vue'
 
+const { t } = useI18n()
 const { user } = useUser()
 
 const showLogoutDialog = ref(false)
@@ -34,20 +35,20 @@ const handleLogout = () => {
       <DropdownMenuItem as-child>
         <Link href="/dashboard">
           <LayoutDashboardIcon class="mr-2" />
-          Dashboard
+          {{ t('userMenu.dashboard') }}
         </Link>
       </DropdownMenuItem>
       <DropdownMenuItem as-child>
         <Link href="/me/details">
           <UserRoundCogIcon class="mr-2" />
-          Mon compte
+          {{ t('userMenu.myAccount') }}
         </Link>
       </DropdownMenuItem>
       <Theme />
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="showLogoutDialog = true">
         <LogOutIcon class="mr-2 text-destructive" />
-        Se déconnecter
+        {{ t('userMenu.logout') }}
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
@@ -55,16 +56,18 @@ const handleLogout = () => {
   <AlertDialog :open="showLogoutDialog">
     <AlertDialogContent>
       <AlertDialogHeader>
-        <AlertDialogTitle>Voulez-vous vraiment vous déconnectez ?</AlertDialogTitle>
+        <AlertDialogTitle>{{ t('userMenu.logoutTitle') }}</AlertDialogTitle>
         <AlertDialogDescription>
-          Une fois déconnecter vous n'aurez plus accès a l'application
+          {{ t('userMenu.logoutDescription') }}
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel @click="showLogoutDialog = false">Annuler</AlertDialogCancel>
+        <AlertDialogCancel @click="showLogoutDialog = false">
+          {{ t('userMenu.cancel') }}
+        </AlertDialogCancel>
         <AlertDialogAction as-child>
           <Button variant="destructive" :loading="logoutProcessing" @click="handleLogout()">
-            Se déconnecter
+            {{ t('userMenu.logout') }}
           </Button>
         </AlertDialogAction>
       </AlertDialogFooter>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const currentTab = computed({
   set: (value: string | number) => {
     router.visit(value.toString())
@@ -12,15 +14,15 @@ const currentTab = computed({
   <div class="flex min-h-screen justify-center items-center bg-background">
     <Tabs v-model="currentTab" class="w-[500px]">
       <TabsList class="grid w-full grid-cols-2">
-        <TabsTrigger value="login"> Se connnecter </TabsTrigger>
-        <TabsTrigger value="register"> S'enregistrer </TabsTrigger>
+        <TabsTrigger value="login"> {{ t('authLayout.signIn') }} </TabsTrigger>
+        <TabsTrigger value="register"> {{ t('authLayout.register') }} </TabsTrigger>
       </TabsList>
       <TabsContent value="login">
         <Card>
           <CardHeader>
-            <CardTitle>Se connecter</CardTitle>
+            <CardTitle>{{ t('authLayout.signIn') }}</CardTitle>
             <CardDescription>
-              Connectez vous avec votre compte google ou votre email
+              {{ t('authLayout.signInDescription') }}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -31,9 +33,9 @@ const currentTab = computed({
       <TabsContent value="register">
         <Card>
           <CardHeader>
-            <CardTitle>S'enregistrer</CardTitle>
+            <CardTitle>{{ t('authLayout.register') }}</CardTitle>
             <CardDescription>
-              Entrer vos informations pour vous inscrire à la plateforme
+              {{ t('authLayout.registerDescription') }}
             </CardDescription>
           </CardHeader>
           <CardContent>

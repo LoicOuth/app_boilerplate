@@ -34,7 +34,7 @@ export default class ForgotPasswordController {
     const connectedAuthProvider = await user.connectedAuthProvider()
 
     if (connectedAuthProvider) {
-      session.flash({ errors: 'Se compte est connecté avec un service externe' })
+      session.flash({ errors: 'forgotPassword.errorAuthProvider' })
       return response.redirect().back()
     }
 
@@ -51,7 +51,7 @@ export default class ForgotPasswordController {
       },
     })
 
-    session.flash({ success: "L'email avec les informations a été envoyé" })
+    session.flash({ success: 'forgotPassword.sucessMessage' })
     return response.redirect().back()
   }
 }

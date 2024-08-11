@@ -10,6 +10,7 @@ type NotificationEvent =
   | { deleteNotification: number }
   | { notification: NotificationPresenter }
 
+const { t } = useI18n()
 const { user } = useUser()
 
 const notifications = ref<NotificationPresenter[]>([])
@@ -106,7 +107,7 @@ onMounted(async () => {
                         <BellOffIcon />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent> Marquer comme lu </TooltipContent>
+                    <TooltipContent> {{ t('notifications.markAsRead') }} </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
                 <TooltipProvider>
@@ -116,7 +117,7 @@ onMounted(async () => {
                         <TrashIcon class="text-red-500" />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent> Supprimer </TooltipContent>
+                    <TooltipContent> {{ t('notifications.delete') }} </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               </div>
@@ -124,7 +125,7 @@ onMounted(async () => {
           </div>
         </template>
       </div>
-      <div v-else class="p-5">Aucune notifications</div>
+      <div v-else class="p-5">{{ t('notifications.noNotifications') }}</div>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>

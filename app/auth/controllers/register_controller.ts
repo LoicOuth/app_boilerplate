@@ -49,7 +49,7 @@ export default class RegisterController {
       },
     })
 
-    session.flash('success', 'Un e-mail de validation de votre compte a été envoyé.')
+    session.flash('success', 'register.emailSent')
 
     return response.redirect().toRoute('register.index')
   }

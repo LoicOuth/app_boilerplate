@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MeLayout from '~/layouts/me.layout.vue'
 
+const { t } = useI18n()
 const { setBreadCrumb } = useProfileBreadcrumb()
 const { user } = useUser()
 
@@ -18,28 +19,28 @@ const handleUpdatePassword = () => {
 }
 
 onMounted(() => {
-  setBreadCrumb([{ href: '/me/security', label: 'Sécurité' }])
+  setBreadCrumb([{ href: '/me/security', label: t('profileSecurity.title') }])
 })
 </script>
 
 <template>
-  <Head title="Sécurité" />
+  <Head :title="t('profileSecurity.head')" />
 
   <MeLayout>
     <div>
-      <h3 class="text-lg font-medium">Sécurité</h3>
-      <p class="text-sm text-muted-foreground">Vous pouvez modifier votre mot de passe ici</p>
+      <h3 class="text-lg font-medium">{{ t('profileSecurity.title') }}</h3>
+      <p class="text-sm text-muted-foreground">{{ t('profileSecurity.description') }}</p>
     </div>
     <Separator />
     <div class="flex flex-col gap-2">
-      <Label for="password">Mot de passe</Label>
+      <Label for="password">{{ t('profileSecurity.password') }}</Label>
       <Input v-model="formData.password" id="password" type="password" required />
       <span v-if="formData.errors.password" class="text-red-500 text-xs">
         {{ formData.errors.password[0] }}
       </span>
     </div>
     <div class="flex flex-col gap-2">
-      <Label for="password_confirmation">Confimer le mot de passe</Label>
+      <Label for="password_confirmation">{{ t('profileSecurity.confirmedPassword') }}</Label>
       <Input
         v-model="formData.password_confirmation"
         id="password_confirmation"
@@ -56,13 +57,12 @@ onMounted(() => {
             :disabled="user?.isConnectedWithProvider"
             @click="handleUpdatePassword()"
           >
-            Mettre à jour
+            {{ t('profileSecurity.update') }}
           </Button>
         </TooltipTrigger>
         <TooltipContent>
           <p>
-            Vous ne pouvez pas modifier votre mot de passe car vous êtes connecter avec un service
-            tiers
+            {{ t('profileSecurity.cantEdit') }}
           </p>
         </TooltipContent>
       </Tooltip>

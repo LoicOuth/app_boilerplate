@@ -2,6 +2,7 @@
 import { ThemCoookieKey, Theme } from '#types/theme'
 import { SunMoonIcon } from 'lucide-vue-next'
 
+const { t } = useI18n()
 const theme = ref<Theme>()
 
 const toggleTheme = () => {
@@ -31,13 +32,17 @@ onMounted(() => {
   <DropdownMenuSub>
     <DropdownMenuSubTrigger>
       <SunMoonIcon class="mr-2" />
-      Thème
+      {{ t('userMenu.theme') }}
     </DropdownMenuSubTrigger>
     <DropdownMenuPortal>
       <DropdownMenuSubContent>
         <DropdownMenuRadioGroup :model-value="theme" @update:model-value="toggleTheme()">
-          <DropdownMenuRadioItem :value="Theme.Dark"> Sombre </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem :value="Theme.Light"> Clair </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem :value="Theme.Dark">
+            {{ t('userMenu.dark') }}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem :value="Theme.Light">
+            {{ t('userMenu.light') }}
+          </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuSubContent>
     </DropdownMenuPortal>
