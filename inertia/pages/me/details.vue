@@ -34,7 +34,7 @@ onMounted(() => {
     <Separator />
 
     <Avatar v-if="avatarFileInputSrc" size="lg" class="relative">
-      <AvatarImage :src="avatarFileInputSrc || ''" />
+      <AvatarImage :src="avatarFileInputSrc" />
     </Avatar>
     <UserAvatar v-else :user="user" size="lg" class="group">
       <div
@@ -42,7 +42,7 @@ onMounted(() => {
         class="group-hover:flex absolute top-0 h-full w-full rounded-full bg-opacity-50 bg-black z-10 justify-center hidden items-center cursor-pointer"
         @click="avatarFileInput.click()"
       >
-        <PenIcon />
+        <PenIcon color="white" />
       </div>
     </UserAvatar>
     <input
@@ -99,5 +99,14 @@ onMounted(() => {
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
+
+    <template v-if="user?.validatedAt">
+      <Separator />
+
+      <p class="text-muted-foreground">
+        {{ t('meLayout.validateAccount') }}
+        <strong>{{ new Date(user.validatedAt).toLocaleString() }}</strong>
+      </p>
+    </template>
   </MeLayout>
 </template>

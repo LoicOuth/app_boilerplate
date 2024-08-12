@@ -3,7 +3,8 @@ import frFR from '~/locales/fr-FR.json'
 
 const i18n = createI18n({
   legacy: false,
-  locale: 'fr-FR',
+  locale: navigator.language,
+  fallbackLocale: 'fr-FR',
   messages: {
     'fr-FR': frFR,
   },

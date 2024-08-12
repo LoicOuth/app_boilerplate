@@ -4,6 +4,7 @@ import router from '@adonisjs/core/services/router'
 const MeDetailsController = () => import('#me/controllers/me_details_controller')
 const MeSecurityController = () => import('#me/controllers/me_security_controller')
 const MeConnectionController = () => import('#me/controllers/me_connections_controller')
+const MeChangeThemeController = () => import('#me/controllers/me_change_theme_controller')
 
 router
   .get('/me/details', [MeDetailsController, 'render'])
@@ -27,3 +28,5 @@ router
   .get('/me/connections', [MeConnectionController, 'render'])
   .as('me.connections.render')
   .middleware([middleware.auth()])
+
+router.put('/me/theme', [MeChangeThemeController, 'handle']).as('me.theme')

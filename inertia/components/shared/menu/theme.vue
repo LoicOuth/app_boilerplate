@@ -1,30 +1,19 @@
 <script setup lang="ts">
-import { ThemCoookieKey, Theme } from '#types/theme'
+import { Theme } from '#types/theme'
 import { SunMoonIcon } from 'lucide-vue-next'
 
 const { t } = useI18n()
-const theme = ref<Theme>()
 
-const toggleTheme = () => {
-  const expiryDate = new Date(new Date().getDate() + 365)
-
-  if (theme.value === Theme.Light && !document.documentElement.classList.contains('dark')) {
-    document.documentElement.classList.add('dark')
-    document.cookie = `${ThemCoookieKey}=${Theme.Dark}; SameSite=lax; expires=${expiryDate.toUTCString()}; Path=/;`
-    theme.value = Theme.Dark
-  } else if (theme.value === Theme.Dark && document.documentElement.classList.contains('dark')) {
-    document.documentElement.classList.remove('dark')
-    document.cookie = `${ThemCoookieKey}=${Theme.Light}; expires=${expiryDate.toUTCString()}; Path=/;`
-    theme.value = Theme.Light
-  }
-}
-
-onMounted(() => {
-  if (document.documentElement.classList.contains('dark')) {
-    theme.value = Theme.Dark
-  } else if (!document.documentElement.classList.contains('dark')) {
-    theme.value = Theme.Light
-  }
+const theme = computed({
+  set(value: Theme) {
+    if (value === Theme.Light) {
+      document.documentElement.classList.remove('dark')
+    } else {
+      document.documentElement.classList.add('dark')
+    }
+    router.put('/me/theme')
+  },
+  get: () => (document.documentElement.classList.contains('dark') ? Theme.Dark : Theme.Light),
 })
 </script>
 
@@ -36,7 +25,7 @@ onMounted(() => {
     </DropdownMenuSubTrigger>
     <DropdownMenuPortal>
       <DropdownMenuSubContent>
-        <DropdownMenuRadioGroup :model-value="theme" @update:model-value="toggleTheme()">
+        <DropdownMenuRadioGroup v-model="theme">
           <DropdownMenuRadioItem :value="Theme.Dark">
             {{ t('userMenu.dark') }}
           </DropdownMenuRadioItem>

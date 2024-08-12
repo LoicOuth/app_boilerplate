@@ -4,7 +4,6 @@ import AppBreadcrumb from '~/components/shared/app_breadcrumb.vue'
 
 const { t } = useI18n()
 const { mdAndDown } = useScreenMediaQuery()
-const { user } = useUser()
 
 const currentUrl = computed(() => usePage().url)
 </script>
@@ -17,10 +16,6 @@ const currentUrl = computed(() => usePage().url)
       <h2 class="text-2xl font-bold tracking-tight">Paramétrage du compte</h2>
       <p class="text-muted-foreground">
         {{ t('meLayout.description') }}
-      </p>
-      <p class="text-muted-foreground">
-        {{ t('meLayout.validateAccount') }}
-        <strong>{{ new Date(user.validatedAt).toLocaleString() }}</strong>
       </p>
     </div>
     <Separator class="my-6" />
