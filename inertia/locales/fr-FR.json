@@ -87,7 +87,11 @@
   },
   "publicLayout": {
     "home": "Accueil",
-    "signIn": "Se connecter"
+    "signIn": "Se connecter",
+    "navigation": "Navigation",
+    "informations": "Informations",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation"
   },
   "notifications": {
     "markAsRead": "Marquer comme lu",

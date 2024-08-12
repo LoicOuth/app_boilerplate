@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenuIcon, LogInIcon } from 'lucide-vue-next'
+import { MenuIcon, LogInIcon, LinkedinIcon, InstagramIcon, TwitterIcon } from 'lucide-vue-next'
 import NavLink from '~/components/shared/nav_link.vue'
 import Toast from '~/components/shared/toast.vue'
 import Notification from '~/components/shared/notification.vue'
@@ -52,5 +52,56 @@ const isOpen = ref(false)
         <slot />
       </main>
     </div>
+    <footer class="border-t border-border py-20 px-40">
+      <div class="flex items-center lg:flex-row flex-col gap-20">
+        <div class="flex-1 flex-col">
+          <!-- LOGI -->
+          <!-- <img src="" /> -->
+          <div class="flex items-center gap-5 flex-wrap">
+            <a href="https://www.linkedin.com/in/lo%C3%AFc-outhier-508329180/" target="_blank">
+              <LinkedinIcon class="h-8 w-8" />
+            </a>
+            <a href="https://www.linkedin.com/in/lo%C3%AFc-outhier-508329180/" target="_blank">
+              <InstagramIcon class="h-8 w-8" />
+            </a>
+            <a href="https://www.linkedin.com/in/lo%C3%AFc-outhier-508329180/" target="_blank">
+              <TwitterIcon class="h-8 w-8" />
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center gap-40">
+          <div class="flex flex-col gap-5">
+            <h2 class="text-lg font-bold">{{ t('publicLayout.navigation') }}</h2>
+            <Link
+              href="/"
+              class="transition-colors hover:text-foreground/80 text-foreground/60 font-semibold"
+            >
+              {{ t('publicLayout.home') }}
+            </Link>
+            <Link
+              href="/about"
+              class="transition-colors hover:text-foreground/80 text-foreground/60 font-semibold"
+            >
+              A propos
+            </Link>
+          </div>
+          <div class="flex flex-col gap-5">
+            <h2 class="text-lg font-bold">{{ t('publicLayout.informations') }}</h2>
+            <Link
+              href="/"
+              class="transition-colors hover:text-foreground/80 text-foreground/60 font-semibold"
+            >
+              {{ t('publicLayout.privacyPolicy') }}
+            </Link>
+            <Link
+              href="/about"
+              class="transition-colors hover:text-foreground/80 text-foreground/60 font-semibold"
+            >
+              {{ t('publicLayout.termsOfService') }}
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
