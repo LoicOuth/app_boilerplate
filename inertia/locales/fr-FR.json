@@ -104,13 +104,14 @@
     "logout": "Se déconnecter",
     "logoutTitle": "Voulez-vous vraiment vous déconnectez ?",
     "logoutDescription": " Une fois déconnecter vous n'aurez plus accès a l'application",
-    "cancel": "Annuler",
-    "theme": "Thème",
-    "dark": "Sombre",
-    "light": "Clair"
+    "cancel": "Annuler"
   },
   "defaultBreadcrumb": {
     "home": "Accueil",
     "details": "Paramétrage du compte"
+  },
+  "theme": {
+    "dark": "Sombre",
+    "light": "Clair"
   }
 }

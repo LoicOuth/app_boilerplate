@@ -2,6 +2,8 @@
 import { Theme } from '#types/theme'
 import { MoonIcon, SunIcon } from 'lucide-vue-next'
 
+const { t } = useI18n()
+
 const theme = ref<Theme>()
 
 onMounted(() => {
@@ -23,8 +25,17 @@ const toggleTheme = () => {
 </script>
 
 <template>
-  <Button variant="ghost" size="icon" @click="toggleTheme()">
-    <SunIcon v-if="theme === Theme.Dark" />
-    <MoonIcon v-else />
-  </Button>
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger>
+        <Button variant="ghost" size="icon" @click="toggleTheme()">
+          <SunIcon v-if="theme === Theme.Dark" />
+          <MoonIcon v-else />
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>{{ t(`theme.${theme === Theme.Dark ? 'light' : 'dark'}`) }}</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
 </template>
