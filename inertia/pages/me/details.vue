@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PenIcon } from 'lucide-vue-next'
-import UserAvatar from '~/components/shared/user/user_avatar.vue'
-import MeLayout from '~/layouts/me.layout.vue'
+import UserAvatar from '~/components/shared/user/UserAvatar.vue'
+import MeLayout from '~/layouts/Me.layout.vue'
 
 const { t } = useI18n()
 const { setBreadCrumb } = useProfileBreadcrumb()
@@ -94,7 +94,7 @@ onMounted(() => {
         </TooltipTrigger>
         <TooltipContent>
           <p>
-            {{ t('profileDetails.cantEdits') }}
+            {{ t('profileDetails.cantEdit') }}
           </p>
         </TooltipContent>
       </Tooltip>

@@ -2,9 +2,11 @@ import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { renderToString } from '@vue/server-renderer'
 import { createSSRApp, h, type DefineComponent } from 'vue'
-import PublicLayout from '~/layouts/public.layout.vue'
-import AuthLayout from '~/layouts/auth.layout.vue'
+import PublicLayout from '~/layouts/Public.layout.vue'
+import AuthLayout from '~/layouts/Auth.layout.vue'
 import i18n from '~/plugins/i18n'
+import MainLayout from '~/layouts/Main.layout.vue'
+import AppLayout from '~/layouts/App.layout.vue'
 
 export default function render(page: any) {
   return createInertiaApp({
@@ -17,13 +19,17 @@ export default function render(page: any) {
       )
 
       currentPage.then((module) => {
-        if (module.default.layout === undefined) {
-          if (name.includes('login') || name.includes('register')) {
-            module.default.layout = AuthLayout
-          } else if ((name.includes('public') && !name.includes('auth')) || name.includes('me')) {
-            module.default.layout = PublicLayout
-          }
+        let layout = AppLayout
+
+        if (name.includes('Login') || name.includes('Register')) {
+          layout = AuthLayout
+        } else if ((name.includes('public') && !name.includes('auth')) || name.includes('me')) {
+          layout = PublicLayout
+        } else if (name.includes('auth')) {
+          layout = MainLayout
         }
+
+        module.default.layout = layout
       })
 
       return currentPage

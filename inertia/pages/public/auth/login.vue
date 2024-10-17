@@ -10,7 +10,7 @@ const formData = useForm({
 })
 
 const authError = computed(() => usePage<{ authError?: boolean }>().props.authError)
-const errors = computed(() => usePage().props.errors)
+const errors = computed(() => usePage<{ errors?: string }>().props.errors)
 </script>
 
 <template>

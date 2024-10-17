@@ -12,7 +12,7 @@ export default class MeSecurityController {
   )
 
   async render({ inertia }: HttpContext) {
-    return inertia.render('me/security')
+    return inertia.render('me/Security')
   }
 
   @inject()

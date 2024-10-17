@@ -49,4 +49,5 @@ export default await Env.create(new URL('../', import.meta.url), {
   LOOP_API_KEY: Env.schema.string(),
   LOOP_API_URL: Env.schema.string({ format: 'url' }),
   LOOP_FORGOT_PASSWORD_TRANSACTIONAL_ID: Env.schema.string(),
+  LOOP_ACCOUNT_VERIFICATION_TRANSACTIONAL_ID: Env.schema.string(),
 })

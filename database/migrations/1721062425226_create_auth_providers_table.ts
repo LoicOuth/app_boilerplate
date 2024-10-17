@@ -7,7 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('user_id').unsigned().references('users.id')
-      table.enum('provider_name', ['google']).defaultTo('google')
+      table.string('provider_name').defaultTo('google')
       table.string('provider_id').unique()
       table.boolean('is_connected_with').defaultTo(true)
 

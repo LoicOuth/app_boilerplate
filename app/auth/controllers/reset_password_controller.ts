@@ -15,7 +15,7 @@ export default class ResetPasswordController {
       session.flash({ errors: 'resetPassword.sessionExpiredError' })
     }
 
-    return inertia.render('public/auth/reset_password', {
+    return inertia.render('public/auth/ResetPassword', {
       id: request.param('id'),
     })
   }

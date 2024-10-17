@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MeLayout from '~/layouts/me.layout.vue'
+import MeLayout from '~/layouts/Me.layout.vue'
 
 const { t } = useI18n()
 const { setBreadCrumb } = useProfileBreadcrumb()

@@ -7,7 +7,7 @@ export default class MeConnectionsController {
 
     await auth.user.load('authProviders')
 
-    return inertia.render('me/connections', {
+    return inertia.render('me/Connections', {
       providers: auth.user.authProviders.map((provider) => provider.projection()),
     })
   }

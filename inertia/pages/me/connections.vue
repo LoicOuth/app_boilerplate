@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { AuthProviderPresenter } from '#auth/presenters/auth_provider_presenter'
+import { type AuthProviderPresenter } from '#auth/presenters/auth_provider_presenter'
 import { type AuthProviderNames, AuthProviderNamesArray } from '#types/common'
 import { CableIcon } from 'lucide-vue-next'
 import GoogleIcon from '~/assets/images/google_icon.vue'
-import MeLayout from '~/layouts/me.layout.vue'
+import MeLayout from '~/layouts/Me.layout.vue'
 
 const { t } = useI18n()
 

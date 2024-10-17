@@ -1,7 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MainLayout from '~/layouts/Main.layout.vue'
+</script>
 
 <template>
-  <div>
-    <slot />
-  </div>
+  <MainLayout>
+    <div>
+      <slot />
+    </div>
+  </MainLayout>
 </template>

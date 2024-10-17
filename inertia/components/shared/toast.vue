@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toast } from 'vue-sonner'
-import { SharedProps } from '@adonisjs/inertia/types'
+import { type SharedProps } from '@adonisjs/inertia/types'
 
 const sharedProps = computed(() => usePage<SharedProps>().props)
 

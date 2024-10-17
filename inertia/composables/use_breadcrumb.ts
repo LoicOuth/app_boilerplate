@@ -1,4 +1,4 @@
-import { BreadcrumbItem } from '#types/common'
+import { type BreadcrumbItem } from '#types/common'
 import { ref } from 'vue'
 import i18n from '~/plugins/i18n'
 

@@ -3,7 +3,7 @@ const { breadcrumbProfileItems } = useProfileBreadcrumb()
 </script>
 
 <template>
-  <Breadcrumb class="mt-3">
+  <Breadcrumb class="mt-10">
     <BreadcrumbList>
       <template v-for="(item, index) in breadcrumbProfileItems" :key="index">
         <BreadcrumbItem>

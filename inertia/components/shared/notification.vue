@@ -2,7 +2,7 @@
 import { BellIcon, BellOffIcon, TrashIcon } from 'lucide-vue-next'
 import { Transmit } from '@adonisjs/transmit-client'
 import { toast } from 'vue-sonner'
-import { NotificationPresenter } from '#notifications/presenters/notification_presenter'
+import { type NotificationPresenter } from '#notifications/presenters/notification_presenter'
 
 type NotificationEvent =
   | { notifications: NotificationPresenter[] }

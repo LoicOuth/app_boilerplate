@@ -28,8 +28,7 @@ const inertiaConfig = defineConfig({
    * Options for the server-side rendering
    */
   ssr: {
-    //FIXME: Remove SSR temporaly because some hydratation issues
-    enabled: false,
+    enabled: true,
     pages: (_, page) => page.startsWith('public'),
   },
 })

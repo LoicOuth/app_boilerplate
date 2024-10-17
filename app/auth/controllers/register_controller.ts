@@ -19,7 +19,7 @@ export default class RegisterController {
   )
 
   render({ inertia }: HttpContext) {
-    return inertia.render('public/auth/register')
+    return inertia.render('public/auth/Register')
   }
 
   @inject()
@@ -38,7 +38,7 @@ export default class RegisterController {
 
     await loop.sendTransactionalEmail({
       email: user.email,
-      transactionalId: env.get('LOOP_FORGOT_PASSWORD_TRANSACTIONAL_ID'),
+      transactionalId: env.get('LOOP_ACCOUNT_VERIFICATION_TRANSACTIONAL_ID'),
       dataVariables: {
         name: user.name,
         url: router

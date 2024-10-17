@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MonitorUpIcon, ShieldIcon, UserCogIcon } from 'lucide-vue-next'
-import AppBreadcrumb from '~/components/shared/app_breadcrumb.vue'
+import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
 
 const { t } = useI18n()
 const { mdAndDown } = useScreenMediaQuery()
@@ -11,7 +11,7 @@ const currentUrl = computed(() => usePage().url)
 <template>
   <AppBreadcrumb />
 
-  <div class="mt-10 pb-16">
+  <div class="mt-8 pb-16">
     <div class="space-y-0.5">
       <h2 class="text-2xl font-bold tracking-tight">Paramétrage du compte</h2>
       <p class="text-muted-foreground">

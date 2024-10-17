@@ -1,24 +1,27 @@
-import type { HttpContext } from '@adonisjs/core/http'
 import transmit from '@adonisjs/transmit/services/main'
 import { assertExists } from '@adonisjs/core/helpers/assert'
+import { middleware } from '#start/kernel'
 
-transmit.authorizeChannel<{ id: string }>(
-  'users/:id/notifications',
-  async (ctx: HttpContext, { id }) => {
-    return ctx.auth.user?.id === +id
+transmit.registerRoutes((route) => {
+  if (route.getPattern() === '__transmit/events' || route.getPattern() === '__transmit/subscribe') {
+    route.middleware(middleware.auth())
   }
-)
+})
 
-transmit.on('subscribe', async (payload) => {
+transmit.authorize('users/:id/notifications', async (context, { id }) => {
+  return context.auth.user?.id === +id
+})
+
+transmit.on<'subscribe'>('subscribe', async (payload) => {
   if (payload.channel.startsWith('users/') && payload.channel.endsWith('/notifications')) {
-    assertExists(payload.ctx.auth.user, 'User is not authenticated')
+    assertExists(payload.context.auth.user, 'User is not authenticated')
 
-    await payload.ctx.auth.user.load('notifications', (builder) => {
+    await payload.context.auth.user.load('notifications', (builder) => {
       builder.orderBy('created_at', 'desc')
     })
 
     transmit.broadcast(payload.channel, {
-      notifications: payload.ctx.auth.user.notifications.map((notification) =>
+      notifications: payload.context.auth.user.notifications.map((notification) =>
         notification.projection()
       ) as any,
     })

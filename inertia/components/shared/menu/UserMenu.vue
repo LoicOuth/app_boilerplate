@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { LayoutDashboardIcon, LogOutIcon, UserRoundCogIcon } from 'lucide-vue-next'
-import Theme from '~/components/shared/menu/theme.vue'
-import UserAvatar from '~/components/shared/user/user_avatar.vue'
+import UserAvatar from '~/components/shared/user/UserAvatar.vue'
 
 const { t } = useI18n()
 const { user } = useUser()
@@ -44,7 +43,6 @@ const handleLogout = () => {
           {{ t('userMenu.myAccount') }}
         </Link>
       </DropdownMenuItem>
-      <Theme />
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="showLogoutDialog = true">
         <LogOutIcon class="mr-2 text-destructive" />

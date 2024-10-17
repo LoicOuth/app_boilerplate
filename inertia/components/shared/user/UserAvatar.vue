@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserPresenter } from '#me/presenters/user_presenter'
-import { AvatarVariants } from '~/components/shared/ui/avatar'
+import { type UserPresenter } from '#me/presenters/user_presenter'
+import { type AvatarVariants } from '~/components/shared/ui/avatar'
 
 const props = defineProps({
   user: { type: Object as PropType<UserPresenter | undefined>, required: true },

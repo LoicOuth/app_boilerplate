@@ -6,10 +6,11 @@ import { createApp, h } from 'vue'
 import type { DefineComponent } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
-import PublicLayout from '~/layouts/public.layout.vue'
-import AuthLayout from '~/layouts/auth.layout.vue'
-import AppLayout from '~/layouts/app.layout.vue'
+import PublicLayout from '~/layouts/Public.layout.vue'
+import AuthLayout from '~/layouts/Auth.layout.vue'
+import AppLayout from '~/layouts/App.layout.vue'
 import i18n from '~/plugins/i18n'
+import MainLayout from '~/layouts/Main.layout.vue'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 
@@ -27,10 +28,12 @@ createInertiaApp({
     page.then((module) => {
       let layout = AppLayout
 
-      if (name.includes('login') || name.includes('register')) {
+      if (name.includes('Login') || name.includes('Register')) {
         layout = AuthLayout
       } else if ((name.includes('public') && !name.includes('auth')) || name.includes('me')) {
         layout = PublicLayout
+      } else if (name.includes('auth')) {
+        layout = MainLayout
       }
 
       module.default.layout = layout
@@ -40,8 +43,6 @@ createInertiaApp({
   },
 
   setup({ el, App, props, plugin }) {
-    //FIXME: Remove SSR temporaly because some hydratation issues
-    // createSSRApp({ render: () => h(App, props) })
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(i18n)

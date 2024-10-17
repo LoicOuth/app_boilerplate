@@ -8,7 +8,7 @@ export default class LoginController {
   )
 
   render({ inertia }: HttpContext) {
-    return inertia.render('public/auth/login')
+    return inertia.render('public/auth/Login')
   }
 
   async handle({ response, request, auth, session }: HttpContext) {

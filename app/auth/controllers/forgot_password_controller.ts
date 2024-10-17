@@ -21,7 +21,7 @@ export default class ForgotPasswordController {
   )
 
   render({ inertia }: HttpContext) {
-    return inertia.render('public/auth/forgot_password')
+    return inertia.render('public/auth/ForgotPassword')
   }
 
   @inject()

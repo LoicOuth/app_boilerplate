@@ -19,7 +19,7 @@ export default class MeDetailsController {
   )
 
   async render({ inertia }: HttpContext) {
-    return inertia.render('me/details')
+    return inertia.render('me/Details')
   }
 
   @inject()
