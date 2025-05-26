@@ -19,7 +19,7 @@ const handleUpdatePassword = () => {
 }
 
 onMounted(() => {
-  setBreadCrumb([{ href: '/me/security', label: t('profileSecurity.title') }])
+  setBreadCrumb([{ route: 'me.security.render', label: t('profileSecurity.title') }])
 })
 </script>
 

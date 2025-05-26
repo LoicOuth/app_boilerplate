@@ -15,4 +15,4 @@ import '#me/routes/me_routes'
 
 import router from '@adonisjs/core/services/router'
 
-router.get('/about', (ctx) => ctx.inertia.render('public/About'))
+router.get('/about', (ctx) => ctx.inertia.render('public/About')).as('about.index')

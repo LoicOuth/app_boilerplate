@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { BellIcon, BellOffIcon, TrashIcon } from 'lucide-vue-next'
 import { Transmit } from '@adonisjs/transmit-client'
-import { toast } from 'vue-sonner'
 import { type NotificationPresenter } from '#notifications/presenters/notification_presenter'
+import { toast } from 'vue-sonner'
 
 type NotificationEvent =
   | { notifications: NotificationPresenter[] }
@@ -70,10 +70,10 @@ onMounted(async () => {
   <DropdownMenu>
     <DropdownMenuTrigger>
       <Button variant="ghost" size="icon" class="relative">
-        <BellIcon />
+        <BellIcon class="size-6" />
         <div
           v-if="unreadNotifications > 0"
-          class="absolute h-5 w-5 bg-red-500 text rounded-full top-0 right-0 text-white"
+          class="absolute size-5 bg-red-500 text rounded-full top-0 right-0 text-white"
         >
           {{ unreadNotifications }}
         </div>
@@ -83,14 +83,14 @@ onMounted(async () => {
       <div v-if="notifications.length" class="flex flex-col">
         <template v-for="(notif, index) in notifications" :key="notif.id">
           <div
-            class="p-2 border-border flex items-center"
+            class="p-2 flex items-center"
             :class="{ 'border-b': index !== notifications.length - 1 }"
             @mouseover="showActions = notif.id"
             @mouseleave="showActions = null"
           >
             <div class="flex-1">
               <div class="text-lg flex items-center gap-1">
-                <span v-if="!notif.readAt" class="h-2 w-2 bg-primary rounded-full block" />
+                <span v-if="!notif.readAt" class="size-2 bg-primary rounded-full block" />
                 {{ notif.value.title }}
               </div>
               <div class="text-foreground/60 text-sm">{{ notif.value.content }}</div>
@@ -103,7 +103,7 @@ onMounted(async () => {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
-                      <Button variant="ghost" size="icon-xs" @click="markAsRead(notif.id)">
+                      <Button variant="ghost" size="icon" @click="markAsRead(notif.id)">
                         <BellOffIcon />
                       </Button>
                     </TooltipTrigger>
@@ -113,7 +113,7 @@ onMounted(async () => {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
-                      <Button variant="ghost" size="icon-xs" @click="handleDelete(notif.id)">
+                      <Button variant="ghost" size="icon" @click="handleDelete(notif.id)">
                         <TrashIcon class="text-red-500" />
                       </Button>
                     </TooltipTrigger>

@@ -48,19 +48,19 @@ const errors = computed(() => usePage<{ errors?: string }>().props.errors)
         required
       />
       <span v-if="formData.errors.email" class="text-red-500 text-xs">
-        {{ formData.errors.email[0] }}
+        {{ formData.errors.email }}
       </span>
     </div>
     <div class="flex flex-col gap-2">
       <div class="flex items-center">
         <Label for="password">{{ t('login.password') }}</Label>
-        <Link as="a" href="/password/forgot" class="ml-auto inline-block text-sm underline">
+        <Link as="a" route="forgot-password.index" class="ml-auto inline-block text-sm underline">
           {{ t('login.forgotPassword') }}
         </Link>
       </div>
       <Input v-model="formData.password" id="password" type="password" required />
       <span v-if="formData.errors.password" class="text-red-500 text-xs">
-        {{ formData.errors.password[0] }}
+        {{ formData.errors.password }}
       </span>
     </div>
     <Button
@@ -73,7 +73,7 @@ const errors = computed(() => usePage<{ errors?: string }>().props.errors)
     </Button>
     <div class="mt-2 text-center text-sm">
       {{ t('login.noAccount') }}
-      <Link href="/register" class="underline"> {{ t('login.register') }} </Link>
+      <Link route="register.index" class="underline"> {{ t('login.register') }} </Link>
     </div>
   </div>
 </template>

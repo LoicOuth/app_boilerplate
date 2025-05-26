@@ -1,13 +1,18 @@
 <script setup lang="ts">
-const props = defineProps<{ to: string; text: string }>()
+import { type RouteNameType } from '#types/common'
 
-const isActive = computed(() => usePage().url === props.to)
+const props = defineProps<{
+  route: RouteNameType
+  text: string
+}>()
+const isActive = useIsRouteActive(props.route)
 </script>
 
 <template>
   <Link
     as="a"
-    :href="props.to"
+    :route="props.route"
+    :params="undefined"
     class="transition-colors hover:text-foreground/80 text-foreground/60 font-semibold"
     :class="{ '!text-foreground': isActive }"
   >

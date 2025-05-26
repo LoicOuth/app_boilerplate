@@ -6,11 +6,11 @@ const { t } = i18n.global
 
 const firstsBreadcrumbProfileItem: BreadcrumbItem[] = [
   {
-    href: '/',
+    route: 'home.index',
     label: t('defaultBreadcrumb.home'),
   },
   {
-    href: '/me/details',
+    route: 'me.details.render',
     label: t('defaultBreadcrumb.details'),
   },
 ]

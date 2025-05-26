@@ -8,7 +8,7 @@ const { breadcrumbProfileItems } = useProfileBreadcrumb()
       <template v-for="(item, index) in breadcrumbProfileItems" :key="index">
         <BreadcrumbItem>
           <BreadcrumbLink v-if="index !== breadcrumbProfileItems.length - 1" as-child>
-            <Link as="a" :href="item.href" class="cursor-pointer">
+            <Link as="a" :route="item.route" :params="undefined" class="cursor-pointer">
               {{ item.label }}
             </Link>
           </BreadcrumbLink>

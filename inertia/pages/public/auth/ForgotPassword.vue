@@ -17,8 +17,8 @@ const formData = useForm({
   <div class="flex min-h-screen justify-center items-center bg-background">
     <Card class="w-[500px]">
       <CardHeader>
-        <Button size="icon-xs" variant="ghost" class="mb-2 cursor-pointer" as-child>
-          <Link as="a" href="/login">
+        <Button size="icon" variant="ghost" class="mb-2 cursor-pointer" as-child>
+          <Link as="a" route="login.index">
             <ArrowLeftIcon />
           </Link>
         </Button>

@@ -32,13 +32,13 @@ const handleLogout = () => {
     </DropdownMenuTrigger>
     <DropdownMenuContent class="min-w-52">
       <DropdownMenuItem as-child>
-        <Link href="/dashboard">
+        <Link route="dashboard.index">
           <LayoutDashboardIcon class="mr-2" />
           {{ t('userMenu.dashboard') }}
         </Link>
       </DropdownMenuItem>
       <DropdownMenuItem as-child>
-        <Link href="/me/details">
+        <Link route="me.details.render">
           <UserRoundCogIcon class="mr-2" />
           {{ t('userMenu.myAccount') }}
         </Link>

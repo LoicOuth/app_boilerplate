@@ -6,76 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const Alert: typeof import('../components/shared/ui/alert/index')['Alert']
-  const AlertDescription: typeof import('../components/shared/ui/alert/index')['AlertDescription']
-  const AlertDialog: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialog']
-  const AlertDialogAction: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialogAction']
-  const AlertDialogCancel: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialogCancel']
-  const AlertDialogContent: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialogContent']
-  const AlertDialogDescription: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialogDescription']
-  const AlertDialogFooter: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialogFooter']
-  const AlertDialogHeader: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialogHeader']
-  const AlertDialogTitle: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialogTitle']
-  const AlertDialogTrigger: typeof import('../components/shared/ui/alert-dialog/index')['AlertDialogTrigger']
-  const AlertTitle: typeof import('../components/shared/ui/alert/index')['AlertTitle']
-  const Avatar: typeof import('../components/shared/ui/avatar/index')['Avatar']
-  const AvatarFallback: typeof import('../components/shared/ui/avatar/index')['AvatarFallback']
-  const AvatarImage: typeof import('../components/shared/ui/avatar/index')['AvatarImage']
-  const Breadcrumb: typeof import('../components/shared/ui/breadcrumb/index')['Breadcrumb']
-  const BreadcrumbEllipsis: typeof import('../components/shared/ui/breadcrumb/index')['BreadcrumbEllipsis']
-  const BreadcrumbItem: typeof import('../components/shared/ui/breadcrumb/index')['BreadcrumbItem']
-  const BreadcrumbLink: typeof import('../components/shared/ui/breadcrumb/index')['BreadcrumbLink']
-  const BreadcrumbList: typeof import('../components/shared/ui/breadcrumb/index')['BreadcrumbList']
-  const BreadcrumbPage: typeof import('../components/shared/ui/breadcrumb/index')['BreadcrumbPage']
-  const BreadcrumbSeparator: typeof import('../components/shared/ui/breadcrumb/index')['BreadcrumbSeparator']
-  const Button: typeof import('../components/shared/ui/button/index')['Button']
-  const Card: typeof import('../components/shared/ui/card/index')['Card']
-  const CardContent: typeof import('../components/shared/ui/card/index')['CardContent']
-  const CardDescription: typeof import('../components/shared/ui/card/index')['CardDescription']
-  const CardFooter: typeof import('../components/shared/ui/card/index')['CardFooter']
-  const CardHeader: typeof import('../components/shared/ui/card/index')['CardHeader']
-  const CardTitle: typeof import('../components/shared/ui/card/index')['CardTitle']
-  const DropdownMenu: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenu']
-  const DropdownMenuCheckboxItem: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuCheckboxItem']
-  const DropdownMenuContent: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuContent']
-  const DropdownMenuGroup: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuGroup']
-  const DropdownMenuItem: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuItem']
-  const DropdownMenuLabel: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuLabel']
-  const DropdownMenuPortal: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuPortal']
-  const DropdownMenuRadioGroup: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuRadioGroup']
-  const DropdownMenuRadioItem: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuRadioItem']
-  const DropdownMenuSeparator: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuSeparator']
-  const DropdownMenuShortcut: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuShortcut']
-  const DropdownMenuSub: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuSub']
-  const DropdownMenuSubContent: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuSubContent']
-  const DropdownMenuSubTrigger: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuSubTrigger']
-  const DropdownMenuTrigger: typeof import('../components/shared/ui/dropdown-menu/index')['DropdownMenuTrigger']
   const EffectScope: typeof import('vue')['EffectScope']
-  const Head: typeof import('@inertiajs/vue3')['Head']
-  const Input: typeof import('../components/shared/ui/input/index')['Input']
-  const Label: typeof import('../components/shared/ui/label/index')['Label']
-  const Link: typeof import('@inertiajs/vue3')['Link']
-  const Separator: typeof import('../components/shared/ui/separator/index')['Separator']
-  const Sheet: typeof import('../components/shared/ui/sheet/index')['Sheet']
-  const SheetClose: typeof import('../components/shared/ui/sheet/index')['SheetClose']
-  const SheetContent: typeof import('../components/shared/ui/sheet/index')['SheetContent']
-  const SheetDescription: typeof import('../components/shared/ui/sheet/index')['SheetDescription']
-  const SheetFooter: typeof import('../components/shared/ui/sheet/index')['SheetFooter']
-  const SheetHeader: typeof import('../components/shared/ui/sheet/index')['SheetHeader']
-  const SheetTitle: typeof import('../components/shared/ui/sheet/index')['SheetTitle']
-  const SheetTrigger: typeof import('../components/shared/ui/sheet/index')['SheetTrigger']
-  const Tabs: typeof import('../components/shared/ui/tabs/index')['Tabs']
-  const TabsContent: typeof import('../components/shared/ui/tabs/index')['TabsContent']
-  const TabsList: typeof import('../components/shared/ui/tabs/index')['TabsList']
-  const TabsTrigger: typeof import('../components/shared/ui/tabs/index')['TabsTrigger']
-  const Toaster: typeof import('../components/shared/ui/sonner/index')['Toaster']
-  const Tooltip: typeof import('../components/shared/ui/tooltip/index')['Tooltip']
-  const TooltipContent: typeof import('../components/shared/ui/tooltip/index')['TooltipContent']
-  const TooltipProvider: typeof import('../components/shared/ui/tooltip/index')['TooltipProvider']
-  const TooltipTrigger: typeof import('../components/shared/ui/tooltip/index')['TooltipTrigger']
-  const alertVariants: typeof import('../components/shared/ui/alert/index')['alertVariants']
-  const avatarVariant: typeof import('../components/shared/ui/avatar/index')['avatarVariant']
-  const buttonVariants: typeof import('../components/shared/ui/button/index')['buttonVariants']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const customRef: typeof import('vue')['customRef']
@@ -115,7 +46,6 @@ declare global {
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
-  const sheetVariants: typeof import('../components/shared/ui/sheet/index')['sheetVariants']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
@@ -128,9 +58,13 @@ declare global {
   const useForm: typeof import('@inertiajs/vue3')['useForm']
   const useI18n: typeof import('vue-i18n')['useI18n']
   const useId: typeof import('vue')['useId']
+  const useIsRouteActive: typeof import('../composables/use_is_route_active')['useIsRouteActive']
   const useModel: typeof import('vue')['useModel']
   const usePage: typeof import('@inertiajs/vue3')['usePage']
+  const usePrefetch: typeof import('@inertiajs/vue3')['usePrefetch']
   const useProfileBreadcrumb: typeof import('../composables/use_breadcrumb')['useProfileBreadcrumb']
+  const useRemember: typeof import('@inertiajs/vue3')['useRemember']
+  const useRouter: typeof import('@tuyau/inertia/vue')['useRouter']
   const useScreenMediaQuery: typeof import('../composables/use_screen_media_query')['useScreenMediaQuery']
   const useSlots: typeof import('vue')['useSlots']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
@@ -143,9 +77,10 @@ declare global {
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
+  export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
 }
+
 // for vue template auto import
 import { UnwrapRef } from 'vue'
 declare module 'vue' {
@@ -203,9 +138,13 @@ declare module 'vue' {
     readonly useForm: UnwrapRef<typeof import('@inertiajs/vue3')['useForm']>
     readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly useId: UnwrapRef<typeof import('vue')['useId']>
+    readonly useIsRouteActive: UnwrapRef<typeof import('../composables/use_is_route_active')['useIsRouteActive']>
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
     readonly usePage: UnwrapRef<typeof import('@inertiajs/vue3')['usePage']>
+    readonly usePrefetch: UnwrapRef<typeof import('@inertiajs/vue3')['usePrefetch']>
     readonly useProfileBreadcrumb: UnwrapRef<typeof import('../composables/use_breadcrumb')['useProfileBreadcrumb']>
+    readonly useRemember: UnwrapRef<typeof import('@inertiajs/vue3')['useRemember']>
+    readonly useRouter: UnwrapRef<typeof import('@tuyau/inertia/vue')['useRouter']>
     readonly useScreenMediaQuery: UnwrapRef<typeof import('../composables/use_screen_media_query')['useScreenMediaQuery']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>

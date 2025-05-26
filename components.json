@@ -1,16 +1,20 @@
 {
   "$schema": "https://shadcn-vue.com/schema.json",
-  "style": "default",
+  "style": "new-york",
   "typescript": true,
   "tailwind": {
-    "config": "tailwind.config.ts",
+    "config": "",
     "css": "inertia/assets/css/index.css",
     "baseColor": "gray",
-    "cssVariables": true
+    "cssVariables": true,
+    "prefix": ""
   },
-  "framework": "vite",
   "aliases": {
-    "components": "inertia/components/shared",
-    "utils": "inertia/utils/shadcn.helper"
-  }
+    "components": "~/components",
+    "composables": "~/composables",
+    "utils": "~/utils/shadcn.helper",
+    "ui": "~/components/shared/ui",
+    "lib": "~/utils"
+  },
+  "iconLibrary": "lucide"
 }

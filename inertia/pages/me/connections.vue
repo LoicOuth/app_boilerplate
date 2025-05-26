@@ -22,7 +22,7 @@ const availableProviders = computed(() =>
 )
 
 onMounted(() => {
-  setBreadCrumb([{ href: '/me/connections', label: t('profileConnections.title') }])
+  setBreadCrumb([{ route: 'me.connections.render', label: t('profileConnections.title') }])
 })
 </script>
 

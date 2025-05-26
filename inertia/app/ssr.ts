@@ -7,6 +7,8 @@ import AuthLayout from '~/layouts/Auth.layout.vue'
 import i18n from '~/plugins/i18n'
 import MainLayout from '~/layouts/Main.layout.vue'
 import AppLayout from '~/layouts/App.layout.vue'
+import { TuyauPlugin } from '@tuyau/inertia/vue'
+import { tuyau } from '~/plugins/tuyau'
 
 export default function render(page: any) {
   return createInertiaApp({
@@ -38,6 +40,7 @@ export default function render(page: any) {
     setup({ App, props, plugin }) {
       return createSSRApp({ render: () => h(App, props) })
         .use(i18n)
+        .use(TuyauPlugin, { client: tuyau })
         .use(plugin)
     },
   })

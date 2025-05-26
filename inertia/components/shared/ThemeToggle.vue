@@ -29,8 +29,8 @@ const toggleTheme = () => {
     <Tooltip>
       <TooltipTrigger>
         <Button variant="ghost" size="icon" @click="toggleTheme()">
-          <SunIcon v-if="theme === Theme.Dark" />
-          <MoonIcon v-else />
+          <SunIcon v-if="theme === Theme.Dark" class="size-6" />
+          <MoonIcon v-else class="size-6" />
         </Button>
       </TooltipTrigger>
       <TooltipContent>

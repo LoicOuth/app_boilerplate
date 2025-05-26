@@ -11,6 +11,8 @@ import AuthLayout from '~/layouts/Auth.layout.vue'
 import AppLayout from '~/layouts/App.layout.vue'
 import i18n from '~/plugins/i18n'
 import MainLayout from '~/layouts/Main.layout.vue'
+import { TuyauPlugin } from '@tuyau/inertia/vue'
+import { tuyau } from '~/plugins/tuyau'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 
@@ -46,6 +48,7 @@ createInertiaApp({
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(i18n)
+      .use(TuyauPlugin, { client: tuyau })
       .mount(el)
   },
 })

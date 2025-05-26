@@ -35,7 +35,7 @@ const formData = useForm({
         <Label for="name">{{ t('register.name') }}</Label>
         <Input v-model="formData.name" id="name" placeholder="Joe Robinson" required />
         <span v-if="formData.errors.name" class="text-red-500 text-xs">
-          {{ formData.errors.name[0] }}
+          {{ formData.errors.name }}
         </span>
       </div>
       <div class="flex flex-col gap-2">
@@ -48,14 +48,14 @@ const formData = useForm({
           required
         />
         <span v-if="formData.errors.email" class="text-red-500 text-xs">
-          {{ formData.errors.email[0] }}
+          {{ formData.errors.email }}
         </span>
       </div>
       <div class="flex flex-col gap-2">
         <Label for="password">{{ t('register.password') }}</Label>
         <Input v-model="formData.password" id="password" type="password" />
         <span v-if="formData.errors.password" class="text-red-500 text-xs">
-          {{ formData.errors.password[0] }}
+          {{ formData.errors.password }}
         </span>
       </div>
       <div class="flex flex-col gap-2">
@@ -76,7 +76,7 @@ const formData = useForm({
       </Button>
       <div class="mt-2 text-center text-sm">
         {{ t('register.alreadyHaveAccount') }}
-        <Link href="/login" class="underline">{{ t('register.signIn') }}</Link>
+        <Link route="login.index" class="underline">{{ t('register.signIn') }}</Link>
       </div>
     </div>
   </div>

@@ -17,7 +17,7 @@ const formData = useForm({
 const avatarFileInputSrc = computed(() => formData.avatar && URL.createObjectURL(formData.avatar))
 
 onMounted(() => {
-  setBreadCrumb([{ href: '/me/details', label: t('profileDetails.title') }])
+  setBreadCrumb([{ route: 'me.details.render', label: t('profileDetails.title') }])
 })
 </script>
 
