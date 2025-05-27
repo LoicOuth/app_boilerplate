@@ -1,5 +1,6 @@
 enum LocalStorageUserPreferencesKey {
   Theme = 'theme',
+  Locale = 'locale',
 }
 
 const set = (key: LocalStorageUserPreferencesKey, value: any) => {

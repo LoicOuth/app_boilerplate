@@ -35,7 +35,7 @@ const isOpen = ref(false)
 
           <template v-else-if="mdAndUp">
             <NavLink route="home.index" :text="t('publicLayout.home')" />
-            <NavLink route="about.index" text="A propos" />
+            <NavLink route="about.index" :text="t('publicLayout.about')" />
           </template>
 
           <div class="flex flex-1 items-center space-x-2 justify-end">
@@ -99,7 +99,7 @@ const isOpen = ref(false)
                 route="about.index"
                 class="transition-colors hover:text-foreground/80 text-foreground/40 font-semibold"
               >
-                A propos
+                {{ t('publicLayout.about') }}
               </Link>
             </div>
             <div class="flex flex-col gap-5">

@@ -79,6 +79,7 @@
     "registerDescription": "Entrer vos informations pour vous inscrire à la plateforme"
   },
   "meLayout": {
+    "head": "Paramétrage du compte",
     "description": "Gérer les paramètres de votre compte et définir vos préférences en matière de courrier électronique.",
     "validateAccount": "Votre compte a été validé le :",
     "details": "Mes informations",
@@ -87,6 +88,7 @@
   },
   "publicLayout": {
     "home": "Accueil",
+    "about": "À propos",
     "signIn": "Se connecter",
     "navigation": "Navigation",
     "informations": "Informations",

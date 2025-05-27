@@ -11,7 +11,7 @@ const { mdAndDown } = useScreenMediaQuery()
 
   <div class="mt-8 pb-16">
     <div class="flex flex-col gap-0.5">
-      <h2 class="text-2xl font-bold tracking-tight">Paramétrage du compte</h2>
+      <h2 class="text-2xl font-bold tracking-tight">{{ t('meLayout.head') }}</h2>
       <p class="text-muted-foreground">
         {{ t('meLayout.description') }}
       </p>

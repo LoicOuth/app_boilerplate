@@ -1,0 +1,119 @@
+{
+  "home": "Home",
+  "forgotPassword": {
+    "head": "Reset your password",
+    "title": "Reset your password",
+    "description": "Enter the email address associated with your account and we will email you instructions to reset your password.",
+    "email": "Email address",
+    "send": "Send instructions",
+    "sucessMessage": "Email with information has been sent!",
+    "errorAuthProvider": "This account is connected with an external service"
+  },
+  "login": {
+    "head": "Login",
+    "connectionErrorTitle": "Connection error",
+    "connectionErrorDescription": "Check your credentials",
+    "connectionWithGoogle": "Login with Google",
+    "email": "Email address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign in",
+    "noAccount": "Don't have an account yet?",
+    "register": "Register",
+    "validateError": "You must validate your account before logging in",
+    "googleAccessDenied": "Access denied",
+    "googleRequestExpired": "The request has expired. Try again"
+  },
+  "register": {
+    "head": "Register",
+    "googleRegister": "Register with Google",
+    "name": "Name",
+    "email": "Email address",
+    "password": "Password",
+    "confirmedPassword": "Confirm password",
+    "create": "Create my account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "emailSent": "A validation email for your account has been sent."
+  },
+  "resetPassword": {
+    "head": "Create a new password",
+    "title": "Create a new password",
+    "description": "Your new password must be different from the previously used password.",
+    "password": "Password",
+    "confirmedPassword": "Confirm password",
+    "resetPassword": "Reset password",
+    "sessionExpiredError": "The session has expired, please try again"
+  },
+  "profileConnections": {
+    "head": "Connections",
+    "title": "Connections",
+    "description": "Here you will find connections with third-party services",
+    "dissociate": "Dissociate",
+    "cantDissociate": "You cannot dissociate this service because you are connected with it",
+    "noExternalConection": "No connection with a third-party service",
+    "connected": "Connect to a third-party service:"
+  },
+  "profileDetails": {
+    "head": "My information",
+    "title": "My information",
+    "description": "You can modify your information below (Name, Email address, avatar)",
+    "name": "Name",
+    "email": "Email address",
+    "update": "Update",
+    "cantEdit": "You cannot edit your information because you are connected with a third-party service"
+  },
+  "profileSecurity": {
+    "head": "Security",
+    "title": "Security",
+    "description": "You can change your password here",
+    "password": "Password",
+    "confirmedPassword": "Confirm password",
+    "update": "Update",
+    "cantEdit": "You cannot edit your information because you are connected with a third-party service"
+  },
+  "authLayout": {
+    "signIn": "Sign in",
+    "register": "Register",
+    "signInDescription": "Sign in with your Google account or email",
+    "registerDescription": "Enter your information to register on the platform"
+  },
+  "meLayout": {
+    "head": "My account",
+    "description": "Manage your account settings and set your email preferences.",
+    "validateAccount": "Your account was validated on:",
+    "details": "My information",
+    "security": "Security",
+    "connection": "Connections"
+  },
+  "publicLayout": {
+    "home": "Home",
+    "about": "About",
+    "signIn": "Sign in",
+    "navigation": "Navigation",
+    "informations": "Information",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "notifications": {
+    "markAsRead": "Mark as read",
+    "delete": "Delete",
+    "noNotifications": "No notifications"
+  },
+  "userMenu": {
+    "dashboard": "Dashboard",
+    "myAccount": "My account",
+    "logout": "Logout",
+    "logoutTitle": "Do you really want to log out?",
+    "logoutDescription": "Once logged out, you will no longer have access to the application",
+    "cancel": "Cancel"
+  },
+  "defaultBreadcrumb": {
+    "home": "Home",
+    "details": "Account settings"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
+  }
+}
