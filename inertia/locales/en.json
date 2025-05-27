@@ -101,6 +101,7 @@
     "noNotifications": "No notifications"
   },
   "userMenu": {
+    "home": "Home",
     "dashboard": "Dashboard",
     "myAccount": "My account",
     "logout": "Logout",

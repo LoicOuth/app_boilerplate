@@ -102,6 +102,7 @@
   },
   "userMenu": {
     "dashboard": "Tableau de bord",
+    "home": "Accueil",
     "myAccount": "Mon compte",
     "logout": "Se déconnecter",
     "logoutTitle": "Voulez-vous vraiment vous déconnectez ?",
